@@ -48,6 +48,11 @@ https://charlieling-jiajie.github.io/pepec900-trainer/
 
 ---
 
+## 交接文档
+
+换设备继续维护，或让 AI 接手，先读 [docs/HANDOVER.md](docs/HANDOVER.md)：
+里面有读法规则、语料流水线顺序、音频合成参数、版本号机制和所有已知坑。
+
 ## 目录结构
 
 ```
