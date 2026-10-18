@@ -1,0 +1,23 @@
+# 模型与中间产物不入库
+models/
+*.tar.bz2
+*.onnx
+*.onnx.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 系统
+Thumbs.db
+.DS_Store
+
+# 临时
+tmp/
+*.log
+
+# 部署工具的本地标记，不入库
+web/.wbapp_*
+web/.workbuddy/

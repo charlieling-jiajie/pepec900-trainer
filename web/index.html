@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PEPEC 900 复诵训练器</title>
+<meta name="theme-color" content="#f4f6f9">
+<meta name="author" content="CharlieL">
+<meta name="description" content="PEPEC 900 句复诵训练器：听标准音、复诵录音、即时指出读错的位置">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <h1>PEPEC 900 复诵训练器</h1>
+      <p>听标准音 · 复诵录音 · 即时指出读错的位置</p>
+    </div>
+    <span class="tag">v1.0</span>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <div class="filters" id="chapterBar"></div>
+  <div class="filters" id="modeBar"></div>
+
+  <div class="card">
+    <div class="sent-head">
+      <span class="badge" id="sid">#—</span>
+      <span class="badge ch" id="chap">—</span>
+      <span class="meta" id="meta"></span>
+      <button class="mini" id="btnReveal">原文</button>
+    </div>
+    <div id="textWrap" class="hide"><div class="text" id="text">加载中…</div></div>
+    <div id="spokenWrap" class="hide">
+      <div class="spoken-label">应读</div>
+      <div class="spoken" id="spoken"></div>
+      <div class="hints" id="hints"></div>
+    </div>
+    <div class="placeholder" id="placeholder">
+      <span class="ph-icon"></span>
+      先听标准音，再复诵。需要看原文时按「原文」。
+    </div>
+  </div>
+
+  <div class="card card-tight">
+    <div class="controls">
+      <button class="primary" id="btnPlay"><span class="dot"></span>播放标准音</button>
+      <div class="speed" id="speedBox">
+        <button data-rate="0.75">0.75×</button>
+        <button data-rate="1" class="on">1×</button>
+        <button data-rate="1.25">1.25×</button>
+      </div>
+      <div class="spacer"></div>
+      <button class="rec" id="btnRec"><span class="dot"></span>录音复诵</button>
+      <button id="btnStop" disabled>停止</button>
+    </div>
+    <div class="meter" id="meter"><canvas id="wave"></canvas><span class="timer" id="timer">0.0s</span></div>
+  </div>
+
+  <div class="card result" id="result">
+    <div class="score-row">
+      <div class="score" id="scoreVal">—</div>
+      <div>
+        <div class="kv" id="scoreLabel">本句匹配度</div>
+        <div class="kv" id="detail"></div>
+      </div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+    <div class="legend">
+      <span><i style="background:#15803d"></i>读对</span>
+      <span><i style="background:#b45309"></i>接近</span>
+      <span><i style="background:#b91c1c"></i>偏差大</span>
+    </div>
+    <div class="note">v1.0 判定为「声学比对」：把录音与标准音做时间对齐后逐词比较，只能指出<b>哪里</b>偏离，暂不判断<b>读成了什么</b>。音素级判定在 v0.2 接入。</div>
+  </div>
+
+  <div class="toolbar">
+    <button id="btnNext">下一句</button>
+    <button id="btnAgain">重录</button>
+    <div class="spacer"></div>
+    <span class="pill" id="pillStat">—</span>
+  </div>
+
+  <div class="foot">
+    快捷键 <span class="kbd">Space</span> 播放 · <span class="kbd">R</span> 录音 · <span class="kbd">T</span> 原文 · <span class="kbd">N</span> 下一句<br>
+    语料：中国民航局飞行标准司《PEPEC 英语考试 900 句》<br>
+    作者：<b>CharlieL</b>
+  </div>
+</div>
+
+<script type="module" src="app.js?v=7"></script>
+</body>
+</html>

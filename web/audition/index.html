@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>参考音音色试听</title>
+<style>
+:root{--line:#e3e8ef;--ink:#0d1520;--ink2:#3d4c5c;--muted:#7b8794;--blue:#1d4ed8;--bg:#f4f6f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:19px;font-weight:600;margin:0 0 6px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.name{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;font-weight:600;min-width:118px}
+.tag{font-size:11.5px;color:var(--muted);background:#eef3f8;border-radius:999px;padding:2px 9px}
+.tag.cur{background:#e8f0ff;color:var(--blue)}
+audio{height:34px;flex:1;min-width:240px}
+.sent{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--ink2);
+  background:#f7f9fc;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:10px;line-height:1.7}
+.note{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>参考音音色试听</h1>
+  <div class="sub">同一句、同一模型（Kokoro-82M），只换说话人。听完把编号告诉我，我用它重生 900 条。</div>
+
+  <div id="list"></div>
+
+  <div class="note">
+    当前用的是 <b>24 号</b>（男声，基频约 128 Hz）。<br>
+    17 号更低沉（约 87 Hz），24 号偏轻（约 128 Hz），0 号是女声（约 144 Hz）。<br>
+    选定后执行：<code>python tools/build_audio.py --engine kokoro --sid &lt;编号&gt; --force</code>
+  </div>
+</div>
+
+<script>
+const voices = [
+  { sid: 24, label: '24', tag: '男声 · 偏轻 128 Hz · 当前', cur: true, f0: 128 },
+  { sid: 16, label: '16', tag: '男声 · 117 Hz', f0: 117 },
+  { sid: 11, label: '11', tag: '男声 · 117 Hz', f0: 121 },
+  { sid: 12, label: '12', tag: '男声 · 109 Hz', f0: 109 },
+  { sid: 17, label: '17', tag: '男声 · 低沉 87 Hz', f0: 87 },
+  { sid: 0,  label: '0',  tag: '女声 · 144 Hz', f0: 144 },
+];
+const SENT = 'Cleared VOR-DME approach Runway 24, descending to 3000 feet QNH 1007.';
+document.getElementById('list').innerHTML = voices.map(v => `
+  <div class="card">
+    <div class="row">
+      <span class="name">${v.label} 号</span>
+      <span class="tag ${v.cur ? 'cur' : ''}">${v.tag}</span>
+      <audio controls preload="none" src="./${v.sid}_305.mp3"></audio>
+    </div>
+    <div class="sent">应读：cleared v o r d m e approach runway two four · descending to three thousand feet q n h one zero zero seven</div>
+  </div>`).join('');
+</script>
+</body>
+</html>

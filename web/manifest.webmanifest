@@ -1,0 +1,14 @@
+{
+  "name": "PEPEC 900 复诵训练器",
+  "short_name": "PEPEC 900",
+  "description": "听标准音、复诵录音、即时指出读错的位置",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f6f9",
+  "theme_color": "#f4f6f9",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
