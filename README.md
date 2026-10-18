@@ -11,10 +11,8 @@
 ## 两种用法
 
 **在线用（免安装）**
-https://pepec900-trainer-41035.app.workbuddy.host/
+https://charlieling-jiajie.github.io/pepec900-trainer/
 手机浏览器可"添加到主屏幕"，体验接近 App。
-
-> 正式站点部署到 GitHub Pages 后，地址形如 `https://<账号>.github.io/pepec900-trainer/`，届时替换上面这一行。
 
 **本地用**
 1. 双击 `start.bat`（需要 Python 3，仅用来起一个静态服务器）
@@ -162,7 +160,7 @@ cd pepec900-trainer
 gh repo create pepec900-trainer --public --source . --push
 
 # 3. 打开仓库 → Settings → Pages → Source 选 "GitHub Actions"
-#    等 Actions 跑完，地址为 https://<你的账号>.github.io/pepec900-trainer/
+#    等 Actions 跑完，地址为 https://charlieling-jiajie.github.io/pepec900-trainer/
 ```
 
 没有 `gh` 也可以：在 GitHub 网页新建仓库后执行
