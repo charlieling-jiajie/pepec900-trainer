@@ -1,7 +1,7 @@
-import CORPUS from './data/corpus.js?v=7';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=7';
+import CORPUS from './data/corpus.js?v=8';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=8';
 
-const ASSET_V = '?v=7';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=8';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;

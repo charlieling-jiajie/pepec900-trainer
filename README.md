@@ -82,7 +82,7 @@ pepec900-trainer/
 | `VOR` / `DME` / `ILS` / `NDB` | V-O-R / D-M-E / I-L-S / N-D-B |
 | `QNH 997` / `QFE 997` | Q-N-H niner niner seven / Q-F-E … |
 | `HF` / `VHF` / `UHF` / `SSR` | H-F / V-H-F / U-H-F / S-S-R |
-| `ATC` / `ADS-B` | A-T-C / A-D-S-B |
+| `ATC` / `ADS-B` / `ELT` | A-T-C / A-D-S-B / E-L-T |
 | `LOC` | localizer |
 | `RNAV` / `TCAS` / `RAIM` | ar-nav / T-cas / raim |
 | `BKM` / `BK-1A` / `HUR` | Bravo-Kilo-Mike / Bravo-Kilo-one-Alfa / Hotel-Uniform-Romeo |
