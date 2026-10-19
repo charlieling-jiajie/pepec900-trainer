@@ -70,7 +70,7 @@ https://charlieling-jiajie.github.io/pepec900-trainer/
 
 ## 使用统计
 
-页面会向自建计数服务上报三个事件：`open`（打开）、`practice`（完成一次复诵）、`asr`（用过识别）。
+页面会向 `ggvps.charlieljj.ccwu.cc` 的自建计数服务上报三个事件：`open`（打开）、`practice`（完成一次复诵）、`asr`（用过识别）。
 **只上报事件名与浏览器本地随机 ID，不上传录音、不记录 IP。**
 
 服务端代码见 `deploy/hitcounter/hit.py`，部署与运维说明见 `docs/HANDOVER.md`。

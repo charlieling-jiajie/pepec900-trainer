@@ -93,9 +93,11 @@ python tools/build_audio.py --engine kokoro --sid 24 --force
   - systemd：`hitcounter.service`（python3 标准库 + SQLite，监听 127.0.0.1:8787，User=nobody）
   - 数据库：`/var/lib/hitcounter/hit.db`（WAL），表 `events(ts,day,event,uid)`
 - HTTPS 前端：`hitnginx.service`，独立 nginx 实例（`/etc/hitnginx/nginx.conf`），**不要动 `/etc/sing-box/nginx.conf`**
-  - 证书：Let's Encrypt，域名 `35-212-199-158.sslip.io`（sslip.io 免费解析到 IP，无需买域名）
-  - 续期：webroot `/var/www/certbot` + `renew_hook = systemctl reload hitnginx`
-- 接口：`POST https://35-212-199-158.sslip.io/api/hit` body `{"e":"open|practice|asr","v":"<随机ID>"}`
+  - 主域名：`ggvps.charlieljj.ccwu.cc`（A 记录 → 35.212.199.158，DNS 托管在 DNSHE）
+  - 备用域名：`35-212-199-158.sslip.io`（同一证书体系，保留作兜底）
+  - 证书：Let's Encrypt ×2（webroot `/var/www/certbot`），`renew_hook = systemctl reload hitnginx`
+  - 注意：`ccwu.cc` 的 NS 不在 Cloudflare，所以无法用 CF Tunnel；`charlieljj.ccwu.cc` 那条指向 CF IP 的 A 记录是失效的
+- 接口：`POST https://ggvps.charlieljj.ccwu.cc/api/hit` body `{"e":"open|practice|asr","v":"<随机ID>"}`
   - `GET /api/stats?t=<TOKEN>` 查看总量与按天明细（TOKEN 在 `hitcounter.service` 的 Environment 里）
 - 隐私：只存事件名 + 前端 localStorage 随机 ID，不存 IP/UA/录音；nginx 侧清空了 X-Real-IP
 - 注意：nginx 1.18 不支持 `http2 on;`，要用 `listen 443 ssl http2;`
