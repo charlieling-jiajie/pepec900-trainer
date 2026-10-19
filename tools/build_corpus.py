@@ -164,7 +164,7 @@ def clean(text: str) -> str:
     return re.sub(r"\s+", " ", t).strip()
 
 
-ABBR_MAP = {}   # 缩写 -> 口语展开，供前端把识别结果还原成同一套词
+ABBR_MAP = {"fl": "flight level"}   # 缩写 -> 口语展开；FL 走 early rule，需预置
 
 
 def expand_segment(t: str, protect_head: bool = False):

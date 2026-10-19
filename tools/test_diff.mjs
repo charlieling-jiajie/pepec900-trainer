@@ -21,7 +21,7 @@ const cases = [
     name: '数字写法差异',
     exp: 'descending to three thousand feet q n h one zero zero seven',
     hyp: 'descending to 3000 feet QNH 1007',
-    want: { ok: 4, pron: 2, sub: 0, miss: 0, extra: 0 },
+    want: { ok: 6, pron: 0, sub: 0, miss: 0, extra: 0 },
   },
   {
     name: '漏词',
@@ -45,7 +45,7 @@ const cases = [
     name: '完全一致',
     exp: 'runway tree six right',
     hyp: 'runway 36 right',
-    want: { ok: 2, pron: 1, sub: 0 },
+    want: { ok: 3, pron: 0, sub: 0 },
   },
 ];
 

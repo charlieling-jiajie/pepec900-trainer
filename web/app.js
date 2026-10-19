@@ -1,9 +1,9 @@
-import CORPUS from './data/corpus.js?v=10';
-import { compare } from './lib/diff.js?v=10';
-import { asrEnv, transcribe } from './lib/asr.js?v=10';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=10';
+import CORPUS from './data/corpus.js?v=11';
+import { compare } from './lib/diff.js?v=11';
+import { asrEnv, transcribe } from './lib/asr.js?v=11';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=11';
 
-const ASSET_V = '?v=10';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=11';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;
@@ -408,17 +408,27 @@ const CLS_TXT = { ok: '一致', pron: '读音', sub: '用词', miss: '漏读', e
 function renderASR(text) {
   const s = st.lastSentence;
   const r = compare(s.spoken, text, CORPUS.meta.abbr || {});
+  const k = r.stats;
+  const diffN = k.pron + k.sub + k.miss + k.extra;
+  let cls = 'ok', verdict = '与原句一致';
+  if (diffN > 0) {
+    if (k.sub === 0 && k.miss === 0 && k.extra === 0) {
+      cls = 'warn'; verdict = `${k.pron} 处读音与标准不同`;
+    } else {
+      cls = 'bad'; verdict = `有 ${diffN} 处不同`;
+    }
+  }
+  const chips = r.items.filter(i => i.cls !== 'ok').slice(0, 4).map(i => {
+    if (i.cls === 'miss') return `<span class="chip miss">漏读 ${esc(i.exp)}</span>`;
+    if (i.cls === 'extra') return `<span class="chip extra">多读 ${esc(i.hyp)}</span>`;
+    return `<span class="chip ${i.cls}">${esc(i.exp)} → ${esc(i.hyp)}</span>`;
+  }).join('');
   el.asrOut.hidden = false;
   el.asrOut.innerHTML = `
-    <div class="asr-head">识别为：<b>${esc(text || '（没有识别到内容）')}</b></div>
-    <div class="asr-rows">${r.items.map(i => `
-      <div class="asr-row ${i.cls}">
-        <span class="a">${esc(i.exp) || '—'}</span>
-        <span class="b">${esc(i.hyp) || '—'}</span>
-        <span class="t">${CLS_TXT[i.cls] || ''}</span>
-      </div>`).join('')}</div>
-    <div class="asr-stat">一致 <b>${r.stats.ok}</b> · 读音 <b>${r.stats.pron}</b> · 用词 <b>${r.stats.sub}</b>
-      · 漏读 <b>${r.stats.miss}</b> · 多读 <b>${r.stats.extra}</b></div>`;
+    <div class="cmp"><span class="k">原句</span><span class="v">${esc(s.text)}</span></div>
+    <div class="cmp"><span class="k">识别</span><span class="v">${esc(text) || '（没有识别到内容）'}</span></div>
+    <div class="asr-verdict ${cls}">${verdict}</div>
+    ${chips ? `<div class="asr-chips">${chips}</div>` : ''}`;
 }
 
 async function runASR() {

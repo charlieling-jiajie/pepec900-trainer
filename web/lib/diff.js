@@ -43,9 +43,15 @@ const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 /** 把识别文本里的缩写还原成训练用的口语展开：VOR -> v o r */
 export function expandAbbr(text, abbr = {}) {
   let h = ' ' + String(text || '').toLowerCase() + ' ';
-  for (const k of Object.keys(abbr).sort((a, b) => b.length - a.length)) {
+  const keys = Object.keys(abbr).sort((a, b) => b.length - a.length);
+  for (const k of keys) {
     const re = new RegExp(`([^a-z0-9])${esc(k)}(?=[^a-z0-9]|$)`, 'g');
     h = h.replace(re, (m, p1) => `${p1}${abbr[k]} `);
+  }
+  // 缩写与数字粘连：fl300 -> flight level 300，qnh1007 -> q n h 1007
+  for (const k of keys) {
+    const re = new RegExp(`([^a-z0-9])${esc(k)}(\\d+)`, 'g');
+    h = h.replace(re, (m, p1, d) => `${p1}${abbr[k]} ${d} `);
   }
   return h.trim();
 }
@@ -195,7 +201,10 @@ export function compare(expected, hyp, abbr = {}) {
   for (const o of merged) {
     if (o.t === '=') {
       const e = A[o.ai], h = B[o.bi];
-      const same = e.raw === h.raw;
+      // 一边是数字写法、一边是读法词（3000 / three thousand）→ 视为一致；
+      // 两边都用读法词则比较原文，tree/three 属于读音差异
+      const eDigit = /\d/.test(e.raw), hDigit = /\d/.test(h.raw);
+      const same = eDigit !== hDigit ? true : e.raw === h.raw;
       items.push({
         cls: same ? 'ok' : 'pron',
         exp: e.raw, hyp: h.raw, expS: e.s, hypS: h.s,
