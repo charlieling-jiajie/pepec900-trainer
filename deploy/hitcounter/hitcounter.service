@@ -1,0 +1,23 @@
+[Unit]
+Description=PEPEC 900 hit counter
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nogroup
+Environment=HIT_DB=/var/lib/hitcounter/hit.db
+Environment=HIT_PORT=8787
+Environment=HIT_TOKEN=__TOKEN__
+Environment=HIT_ORIGIN=https://charlieling-jiajie.github.io
+ExecStart=/usr/bin/python3 /opt/hitcounter/hit.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/hitcounter
+
+[Install]
+WantedBy=multi-user.target

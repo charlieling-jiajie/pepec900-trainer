@@ -1,9 +1,10 @@
-import CORPUS from './data/corpus.js?v=11';
-import { compare } from './lib/diff.js?v=11';
-import { asrEnv, transcribe } from './lib/asr.js?v=11';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=11';
+import CORPUS from './data/corpus.js?v=12';
+import { compare } from './lib/diff.js?v=12';
+import { asrEnv, transcribe } from './lib/asr.js?v=12';
+import { track } from './lib/track.js?v=12';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=12';
 
-const ASSET_V = '?v=11';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=12';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;
@@ -399,6 +400,7 @@ async function score(blob) {
   save();
   el.meta.textContent = `练过 ${rec.n} 次 · 最好 ${rec.best}`;
   updatePill();
+  track('practice');
 }
 
 /* ---------------- 语音识别比对 ---------------- */
@@ -451,6 +453,7 @@ async function runASR() {
     el.asrStatus.textContent = '';
     try {
       renderASR(text);
+      track('asr');
     } catch (e2) {
       console.error('[diff]', e2);
       el.asrStatus.textContent = '比对失败：' + (e2 && e2.message ? e2.message : e2);
@@ -509,4 +512,5 @@ window.addEventListener('resize', () => { fitCanvas(); drawIdle(); });
 renderBar();
 initASRGate();
 next();
+track('open');
 drawIdle();
