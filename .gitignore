@@ -1,8 +1,6 @@
-# 模型与中间产物不入库
-models/
+# 离线合成用的模型（Kokoro 等，体积大）不入库；web/models 是前端识别模型，需随站点发布
+/models/
 *.tar.bz2
-*.onnx
-*.onnx.json
 
 # Python
 __pycache__/
