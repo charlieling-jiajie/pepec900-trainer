@@ -96,7 +96,7 @@ def alt_words(n):
 # ICAO 拼读词（Alfa/Bravo…）只用于需要逐字确认的场合，本工具在「读法表」中作为参考
 # 直接读字母的常用航空缩写（用户指定：ILS 这一类 / 设备与频段缩写）
 LETTER_ABBR = {"VOR", "DME", "ILS", "NDB", "QNH", "QFE", "HF", "VHF", "UHF", "SSR",
-               "ATC", "ADS", "ELT"}
+               "ATC", "ADS", "ELT", "CPDLC"}
 
 WORD_ABBR = {
     "FL": "flight level",

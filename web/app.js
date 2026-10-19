@@ -1,9 +1,9 @@
-import CORPUS from './data/corpus.js?v=9';
-import { compare } from './lib/diff.js?v=9';
-import { asrEnv, transcribe } from './lib/asr.js?v=9';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=9';
+import CORPUS from './data/corpus.js?v=10';
+import { compare } from './lib/diff.js?v=10';
+import { asrEnv, transcribe } from './lib/asr.js?v=10';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=10';
 
-const ASSET_V = '?v=9';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=10';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;
@@ -439,9 +439,17 @@ async function runASR() {
       }
     });
     el.asrStatus.textContent = '';
-    renderASR(text);
+    try {
+      renderASR(text);
+    } catch (e2) {
+      console.error('[diff]', e2);
+      el.asrStatus.textContent = '比对失败：' + (e2 && e2.message ? e2.message : e2);
+    }
   } catch (e) {
-    el.asrStatus.textContent = '识别失败：' + (e && e.message ? e.message : e);
+    console.error('[asr]', e);
+    const head = (e && e.stack ? String(e.stack).split('\n').slice(0, 2).join(' ') : '');
+    el.asrStatus.textContent = '识别失败：' + (e && e.message ? e.message : e)
+      + (head ? ' ｜ ' + head.slice(0, 160) : '');
   } finally {
     el.asrBtn.disabled = false;
   }

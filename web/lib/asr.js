@@ -43,7 +43,10 @@ export async function loadASR(onProgress) {
 
 /** @param {Float32Array} samples 16kHz 单声道 */
 export async function transcribe(samples, onProgress) {
+  if (!samples || !samples.length) throw new Error('录音为空，无法识别');
+  if (samples.length < 1600) throw new Error('录音太短（<0.1 秒），无法识别');
   const asr = await loadASR(onProgress);
-  const out = await asr(samples);
+  const audio = new Float32Array(samples);        // 保证是普通 ArrayBuffer 支持的副本
+  const out = await asr(audio);
   return String((out && out.text) || '').trim();
 }
