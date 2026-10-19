@@ -77,6 +77,16 @@ python tools/build_audio.py --engine kokoro --sid 24 --force
 - 语料里 `gaps` 字段记录「停顿发生在第几个词之前、多长」，前端 `wordRangesBySyllable(syl, n, gaps)` 先把停顿帧扣掉再按音节分配，否则词边界会漂。
 - 全量 900 条约 13 分钟、36MB、77 分钟音频。
 
+## 语音识别比对（v1.1）
+
+- 模型：`web/models/whisper-tiny-en/`（encoder 10.1MB + decoder 30.7MB + tokenizer 2.1MB，int8 量化）
+- 运行时：`web/lib/transformers/`（transformers.js 2.17.2 + ort-wasm-simd.wasm），**全部本地化，不依赖境外 CDN**
+- 代码：`web/lib/asr.js`（懒加载 + 环境门控）、`web/lib/diff.js`（归一化 + LCS 对齐 + 四分类）
+- 三层归一化是核心：缩写还原（`meta.abbr`）→ 数字按数值（`three thousand` ↔ `3000`）→ 连续单字母合并（`v o r` ↔ `VOR`）
+- `env.backends.onnx.wasm.numThreads = 1`：Pages 没有 COOP/COEP，SharedArrayBuffer 不可用，多线程会失败
+- 环境门控：微信内置浏览器直接禁用（提示「在浏览器打开」）；手机浏览器放行但提示慢
+- 单测：`node tools/test_diff.mjs`（7 个用例）
+
 ## 交互约定
 
 - **听写模式**：默认不显示原文与「应读」，按「原文」（快捷键 T）才展开；**播放时自动收起**；评分后只显示「应读」+ 逐词高亮，原文仍需手动展开。

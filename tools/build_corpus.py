@@ -164,6 +164,9 @@ def clean(text: str) -> str:
     return re.sub(r"\s+", " ", t).strip()
 
 
+ABBR_MAP = {}   # 缩写 -> 口语展开，供前端把识别结果还原成同一套词
+
+
 def expand_segment(t: str, protect_head: bool = False):
     """把一段（不含标点）的书面文本展开为口语词表，返回 words"""
     t = t.strip().rstrip(".")
@@ -220,8 +223,10 @@ def expand_segment(t: str, protect_head: bool = False):
     def _up(m):
         w = m.group(0)
         if w in SPECIAL:
+            ABBR_MAP[w.lower()] = SPECIAL[w]
             return SPECIAL[w]
         if w in WORD_ABBR:
+            ABBR_MAP[w.lower()] = WORD_ABBR[w]
             return WORD_ABBR[w]
         plain = w in LETTER_ABBR
         parts = re.split(r"([-])", w)
@@ -233,7 +238,9 @@ def expand_segment(t: str, protect_head: bool = False):
                 out.append(digits(p))
             else:
                 out.append(spell(p) if plain else spell_icao(p))
-        return " ".join(out)
+        r = " ".join(out)
+        ABBR_MAP[w.lower()] = r
+        return r
 
     t = re.sub(r"\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+\b", _up, t)   # 带连字符优先
     t = re.sub(r"\b[A-Z]{2,}\d*\b", _up, t)
@@ -348,6 +355,7 @@ def main():
         "alphabet": {k: v.capitalize() for k, v in ALPHA.items()},
         "digitSpecial": [{"k": "3", "v": "Tree"}, {"k": "9", "v": "Niner"}, {"k": ".", "v": "Decimal"}],
         "digitNormal": "其余数字按常规读法：zero / one / two / four / five / six / seven / eight",
+        "abbr": {k: v for k, v in sorted(ABBR_MAP.items()) if k != v},
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:

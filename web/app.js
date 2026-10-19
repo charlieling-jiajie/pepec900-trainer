@@ -1,7 +1,9 @@
-import CORPUS from './data/corpus.js?v=8';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=8';
+import CORPUS from './data/corpus.js?v=9';
+import { compare } from './lib/diff.js?v=9';
+import { asrEnv, transcribe } from './lib/asr.js?v=9';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=9';
 
-const ASSET_V = '?v=8';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=9';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;
@@ -41,6 +43,7 @@ const el = {
   detail: $('detail'), verdict: $('verdict'),
   next: $('btnNext'), again: $('btnAgain'), pill: $('pillStat'),
   reveal: $('btnReveal'), textWrap: $('textWrap'), spokenWrap: $('spokenWrap'), placeholder: $('placeholder'),
+  asrBtn: $('btnAsr'), asrStatus: $('asrStatus'), asrOut: $('asrOut'),
 };
 
 /* file:// 下 fetch 音频会被拦，给出提示 */
@@ -133,6 +136,16 @@ function applyReveal() {
   el.placeholder.classList.toggle('hide', st.reveal || st.showSpoken);
   el.reveal.textContent = st.reveal ? '隐藏原文' : '原文';
   el.reveal.classList.toggle('on', st.reveal);
+}
+
+function initASRGate() {
+  const env = asrEnv();
+  if (!env.ok) {
+    el.asrBtn.disabled = true;
+    el.asrStatus.textContent = env.reason;
+  } else if (env.warn) {
+    el.asrStatus.textContent = env.warn;
+  }
 }
 
 function updatePill() {
@@ -341,6 +354,7 @@ async function score(blob) {
   const costs = wordCosts(A.n, B.n, res, ranges);
   const sc = scoreWords(costs);
 
+  st.lastUser = user; st.lastSentence = s;
   const refDur = ref.length / 16000, userDur = user.length / 16000;
   const ratio = userDur / refDur;
 
@@ -387,11 +401,58 @@ async function score(blob) {
   updatePill();
 }
 
+/* ---------------- 语音识别比对 ---------------- */
+const esc = (x) => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const CLS_TXT = { ok: '一致', pron: '读音', sub: '用词', miss: '漏读', extra: '多读' };
+
+function renderASR(text) {
+  const s = st.lastSentence;
+  const r = compare(s.spoken, text, CORPUS.meta.abbr || {});
+  el.asrOut.hidden = false;
+  el.asrOut.innerHTML = `
+    <div class="asr-head">识别为：<b>${esc(text || '（没有识别到内容）')}</b></div>
+    <div class="asr-rows">${r.items.map(i => `
+      <div class="asr-row ${i.cls}">
+        <span class="a">${esc(i.exp) || '—'}</span>
+        <span class="b">${esc(i.hyp) || '—'}</span>
+        <span class="t">${CLS_TXT[i.cls] || ''}</span>
+      </div>`).join('')}</div>
+    <div class="asr-stat">一致 <b>${r.stats.ok}</b> · 读音 <b>${r.stats.pron}</b> · 用词 <b>${r.stats.sub}</b>
+      · 漏读 <b>${r.stats.miss}</b> · 多读 <b>${r.stats.extra}</b></div>`;
+}
+
+async function runASR() {
+  const env = asrEnv();
+  if (!env.ok) { el.asrStatus.textContent = env.reason; return; }
+  if (!st.lastUser) { el.asrStatus.textContent = '请先录音'; return; }
+  el.asrBtn.disabled = true;
+  el.asrOut.hidden = true;
+  try {
+    let shown = 0;
+    const text = await transcribe(st.lastUser, (p) => {
+      if (!p) return;
+      if (p.status === 'progress' && p.total) {
+        const pct = Math.round(p.loaded / p.total * 100);
+        if (pct !== shown) { shown = pct; el.asrStatus.textContent = `下载识别模型 ${pct}%（约 43MB，仅首次）`; }
+      } else if (p.status === 'ready') {
+        el.asrStatus.textContent = '识别中…';
+      }
+    });
+    el.asrStatus.textContent = '';
+    renderASR(text);
+  } catch (e) {
+    el.asrStatus.textContent = '识别失败：' + (e && e.message ? e.message : e);
+  } finally {
+    el.asrBtn.disabled = false;
+  }
+}
+
 /* ---------------- 交互 ---------------- */
 el.rec.onclick = startRec;
 el.stop.onclick = stopRec;
 el.next.onclick = next;
 el.again.onclick = () => { if (st.recording) return; startRec(); };
+el.asrBtn.onclick = runASR;
 el.reveal.onclick = () => {
   if (st.recording) return;
   st.reveal = !st.reveal;
@@ -428,5 +489,6 @@ window.addEventListener('resize', () => { fitCanvas(); drawIdle(); });
 
 /* ---------------- 启动 ---------------- */
 renderBar();
+initASRGate();
 next();
 drawIdle();

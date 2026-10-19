@@ -129,3 +129,26 @@ button.mini{font-size:12.5px;padding:4px 12px;border-radius:8px;margin-left:4px}
   .wrap{padding:14px 12px 40px}
   button{padding:9px 12px}
 }
+
+/* 语音识别比对 */
+.asr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.asr-status{font-size:12.5px;color:var(--muted);line-height:1.5}
+.asr-out{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.asr-head{font-size:13px;color:var(--ink-2);margin-bottom:10px;word-break:break-word}
+.asr-rows{display:flex;flex-direction:column;gap:4px}
+.asr-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:baseline;
+  font-family:var(--mono);font-size:12.5px;padding:5px 8px;border-radius:7px;background:#f7f9fc}
+.asr-row .t{font-family:-apple-system,"PingFang SC",sans-serif;font-size:11.5px;color:var(--muted);
+  white-space:nowrap}
+.asr-row.ok{background:#f4f8f4}
+.asr-row.pron{background:#fff8ec}
+.asr-row.sub,.asr-row.miss{background:#fdf1f0}
+.asr-row.extra{background:#f3f5fa}
+.asr-row.pron .b,.asr-row.sub .b{color:#b45309}
+.asr-row.miss .a{color:#b91c1c}
+.asr-row.extra .b{color:#6b7a90}
+.asr-stat{margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+@media(max-width:520px){
+  .asr-row{grid-template-columns:1fr;gap:2px}
+  .asr-row .t{display:none}
+}

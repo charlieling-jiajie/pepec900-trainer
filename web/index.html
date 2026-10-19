@@ -10,7 +10,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 <div class="wrap">
@@ -71,6 +71,11 @@
       </div>
     </div>
     <div class="verdict" id="verdict"></div>
+    <div class="asr">
+      <button id="btnAsr" class="mini">识别我说的</button>
+      <span class="asr-status" id="asrStatus"></span>
+    </div>
+    <div class="asr-out" id="asrOut" hidden></div>
     <div class="legend">
       <span><i style="background:#15803d"></i>读对</span>
       <span><i style="background:#b45309"></i>接近</span>
@@ -93,6 +98,6 @@
   </div>
 </div>
 
-<script type="module" src="app.js?v=8"></script>
+<script type="module" src="app.js?v=9"></script>
 </body>
 </html>

@@ -65,7 +65,7 @@ const ids = [...els.keys()];
 console.log('已访问元素数:', ids.length);
 const required = ['sid', 'chap', 'meta', 'text', 'textWrap', 'spoken', 'spokenWrap', 'hints',
   'btnPlay', 'btnRec', 'btnStop', 'chapterBar', 'modeBar', 'wave', 'scoreVal', 'verdict',
-  'pillStat', 'btnReveal', 'placeholder'];
+  'pillStat', 'btnReveal', 'placeholder', 'btnAsr', 'asrStatus', 'asrOut'];
 const miss = required.filter((r) => !ids.includes(r));
 console.log(miss.length ? '缺失元素: ' + miss.join(',') : '全部关键元素已挂载');
 console.log(miss.length ? 'FAIL' : 'PASS');
