@@ -2,7 +2,7 @@
  * 使用计数：只上报事件名与本地随机 ID，不上传录音、不采集 IP/UA。
  * 事件：open（打开页面）/ practice（完成一次复诵）/ asr（用过识别）
  */
-const API = 'https://35-212-199-158.sslip.io/api/hit';
+const API = 'https://ggvps.charlieljj.ccwu.cc/api/hit';
 
 function uid() {
   try {

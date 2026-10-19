@@ -1,10 +1,10 @@
-import CORPUS from './data/corpus.js?v=12';
-import { compare } from './lib/diff.js?v=12';
-import { asrEnv, transcribe } from './lib/asr.js?v=12';
-import { track } from './lib/track.js?v=12';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=12';
+import CORPUS from './data/corpus.js?v=13';
+import { compare } from './lib/diff.js?v=13';
+import { asrEnv, transcribe } from './lib/asr.js?v=13';
+import { track } from './lib/track.js?v=13';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=13';
 
-const ASSET_V = '?v=12';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=13';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;
