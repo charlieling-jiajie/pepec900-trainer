@@ -167,9 +167,18 @@ export function dtw(A, B, bandRatio = 0.3) {
     if (++guard > n + m + 10) break;
   }
   path.push(0, 0);
-  path.reverse();
-  const pairs = path.length / 2;
-  return { dist: D[idx(n - 1, m - 1)], path: Int32Array.from(path), pairs, norm: D[idx(n - 1, m - 1)] / pairs };
+  // 必须按「对」反转：对扁平数组直接 reverse() 会把每对的 i/j 调换，
+  // 一旦参考与录音帧数不同就会越界取帧（表现为比对时崩溃）
+  const pairsArr = [];
+  for (let k = 0; k < path.length; k += 2) pairsArr.push([path[k], path[k + 1]]);
+  pairsArr.reverse();
+  const flat = new Int32Array(pairsArr.length * 2);
+  for (let k = 0; k < pairsArr.length; k++) {
+    flat[k * 2] = pairsArr[k][0];
+    flat[k * 2 + 1] = pairsArr[k][1];
+  }
+  const pairs = pairsArr.length;
+  return { dist: D[idx(n - 1, m - 1)], path: flat, pairs, norm: D[idx(n - 1, m - 1)] / pairs };
 }
 
 /**
@@ -182,6 +191,7 @@ export function wordCosts(A, B, res, wordRanges) {
   const cnt = new Float64Array(wordRanges.length);
   for (let p = 0; p < pairs; p++) {
     const i = path[p * 2], j = path[p * 2 + 1];
+    if (i == null || j == null || i >= A.length || j >= B.length) continue;  // 防御：越界跳过
     for (let w = 0; w < wordRanges.length; w++) {
       if (i >= wordRanges[w][0] && i <= wordRanges[w][1]) {
         sum[w] += dist(A[i], B[j]); cnt[w]++; break;

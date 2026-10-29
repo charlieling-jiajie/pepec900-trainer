@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>PEPEC 自检</title>
+<style>
+  body{font-family:ui-monospace,Consolas,monospace;background:#0d1520;color:#cfe3ff;padding:24px;font-size:13px}
+  h1{font-size:15px;color:#7cc7ff}
+  .ok{color:#5eead4}.bad{color:#fca5a5}.warn{color:#fcd34d}
+  pre{white-space:pre-wrap;line-height:1.7}
+</style>
+</head>
+<body>
+<h1>PEPEC 900 独立自检（真实浏览器内核）</h1>
+<pre id="out">运行中…</pre>
+<script type="module">
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=15';
+
+const out = document.getElementById('out');
+const lines = [];
+const log = (tag, msg) => {
+  const cls = tag === 'PASS' ? 'ok' : tag === 'FAIL' ? 'bad' : 'warn';
+  lines.push(`<span class="${cls}">[${tag}]</span> ${msg}`);
+  out.innerHTML = lines.join('\n');
+};
+const fail = (m) => log('FAIL', m);
+
+/* 复刻 web/app.js 的 decodeTo16k（含 iOS 回调式回退） */
+async function decodeTo16k(arrayBuffer) {
+  // 用 OfflineAudioContext 解码：它不依赖运行状态，不会因 iOS/微信里
+  // AudioContext 处于 suspended 而卡死（这是"录音后无评分"的另一诱因）
+  let decCtx;
+  try {
+    decCtx = new OfflineAudioContext(1, 1, 16000);
+  } catch {
+    decCtx = await ensureAC();
+  }
+  let buf;
+  try {
+    buf = await decCtx.decodeAudioData(arrayBuffer.slice(0));
+  } catch (err) {
+    // 旧版 Safari 的 decodeAudioData 只认回调形式，重试一次
+    buf = await new Promise((res, rej) => {
+      try {
+        decCtx.decodeAudioData(arrayBuffer.slice(0), res, rej);
+      } catch (e2) { rej(err || e2); }
+    });
+  }
+  if (!buf || !buf.length) throw new Error('录音文件无法解码');
+  if (Math.abs(buf.sampleRate - 16000) < 1 && buf.numberOfChannels === 1) {
+    return buf.getChannelData(0).slice();
+  }
+  const len = Math.max(1, Math.ceil(buf.duration * 16000));
+  const off = new OfflineAudioContext(1, len, 16000);
+  const s = off.createBufferSource();
+  s.buffer = buf; s.connect(off.destination); s.start();
+  const out = await off.startRendering();
+  return out.getChannelData(0).slice();
+}
+
+function feats(samples) {
+  if (!samples || samples.length < 4000) throw new Error('录音太短');
+  const { frames, energy } = logMel(samples, 16000);
+  const [a, b] = trimSilence(energy);
+  const cut = frames.slice(a, b + 1);
+  if (cut.length < 6) throw new Error('录音过短');
+  return { n: cmvn(cut) };
+}
+
+/* 与 app.js 相同的 mimeType 选择逻辑 */
+function pickMime(ua, supported) {
+  const ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const candidates = ios
+    ? ['audio/mp4', 'audio/mp4;codecs=mp4a.40.2', 'video/mp4', 'audio/webm;codecs=opus', 'audio/webm']
+    : ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/ogg'];
+  return candidates.find(m => supported(m)) || '';
+}
+
+async function main() {
+  log('INFO', 'UA: ' + navigator.userAgent.slice(0, 80));
+  log('INFO', 'AudioContext / OfflineAudioContext: ' + (typeof AudioContext) + ' / ' + (typeof OfflineAudioContext));
+
+  // T1 解码参考音
+  let raw, samples;
+  try {
+    log('INFO', 'T1 拉取参考音…');
+    const r = await fetch('audio/18.mp3');
+    raw = await r.arrayBuffer();
+    log('INFO', `T1 取到 ${(raw.byteLength/1024).toFixed(0)}KB，开始解码…`);
+    samples = await decodeTo16k(raw);
+    if (samples.length > 16000) log('PASS', `T1 解码参考音：${samples.length} 样本 @16kHz = ${(samples.length/16000).toFixed(2)}s`);
+    else fail(`T1 解码长度异常 ${samples.length}`);
+  } catch (e) { fail('T1 解码失败：' + e.message); return; }
+
+  // T2 录音路径等价：ArrayBuffer -> Blob -> arrayBuffer -> decode
+  try {
+    const blob = new Blob([raw], { type: 'audio/mpeg' });
+    const back = await blob.arrayBuffer();
+    const s2 = await decodeTo16k(back);
+    if (Math.abs(s2.length - samples.length) <= 1) log('PASS', 'T2 Blob 往返解码一致（模拟录音后的解码路径）');
+    else fail(`T2 往返长度不一致 ${s2.length} vs ${samples.length}`);
+  } catch (e) { fail('T2 Blob 往返失败：' + e.message); }
+
+  // T3 特征与 DTW 自比对（同一音频应得高分）
+  let selfScore;
+  try {
+    const A = feats(samples), B = feats(samples);
+    const ranges = wordRangesBySyllable([2,1,3,1,2], A.n.length, []);
+    const res = dtw(A.n, B.n, 0.35);
+    const costs = wordCosts(A.n, B.n, res, ranges);
+    const sc = scoreWords(costs);
+    selfScore = Math.round(sc.reduce((x, y) => x + y, 0) / sc.length);
+    if (selfScore >= 95) log('PASS', `T3 自比对得分 ${selfScore}（同音必须 ≥95）`);
+    else fail(`T3 自比对得分偏低 ${selfScore}`);
+  } catch (e) { fail('T3 特征/DTW 失败：' + e.message); }
+
+  // T4a 同音色不同句子：应低于自比对（本模型衡量发音贴合度，不衡量内容对错）
+  try {
+    const r2 = await fetch('audio/305.mp3');
+    const s3 = await decodeTo16k(await r2.arrayBuffer());
+    const A = feats(samples), B = feats(s3);
+    const ranges = wordRangesBySyllable([2,1,3,1,2], A.n.length, []);
+    const res = dtw(A.n, B.n, 0.35);
+    const sc = scoreWords(wordCosts(A.n, B.n, res, ranges));
+    const other = Math.round(sc.reduce((x, y) => x + y, 0) / sc.length);
+    if (other < selfScore) log('PASS', `T4a 同音色异句得分 ${other} < 自比对 ${selfScore}（符合预期：模型衡量发音贴合度）`);
+    else fail(`T4a 同音色异句 ${other} ≥ 自比对 ${selfScore}`);
+  } catch (e) { fail('T4a 失败：' + e.message + ' || ' + String(e.stack || '').split('\n').slice(0,3).join(' | ')); }
+
+  // T4b 白噪声：必须显著低分，证明能识别真正的差异
+  try {
+    const noise = new Float32Array(samples.length);
+    for (let i = 0; i < noise.length; i++) noise[i] = (Math.random() * 2 - 1) * 0.25;
+    const A = feats(samples), B = feats(noise);
+    const ranges = wordRangesBySyllable([2,1,3,1,2], A.n.length, []);
+    const res = dtw(A.n, B.n, 0.35);
+    const sc = scoreWords(wordCosts(A.n, B.n, res, ranges));
+    const nz = Math.round(sc.reduce((x, y) => x + y, 0) / sc.length);
+    if (nz < selfScore - 25) log('PASS', `T4b 白噪声得分 ${nz}，比自比对低 ${selfScore - nz} 分（区分度正常）`);
+    else fail(`T4b 白噪声得分过高 ${nz}（自比对 ${selfScore}）`);
+  } catch (e) { fail('T4b 失败：' + e.message); }
+
+  // T5 mimeType 选择（覆盖 iOS / Android / 微信 X5 三种支持矩阵）
+  const iosMime = pickMime('Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)', m => ['audio/mp4','video/mp4'].some(k => m.startsWith(k)));
+  const andMime = pickMime('Mozilla/5.0 (Linux; Android 13)', m => ['audio/webm','audio/webm;codecs=opus'].includes(m));
+  const x5Mime  = pickMime('Mozilla/5.0 (Linux; Android 12; MicroMessenger)', () => false);
+  if (iosMime.startsWith('audio/mp4')) log('PASS', `T5 iOS 选中 ${iosMime}（优先 mp4，修掉 webm 优先的 bug）`);
+  else fail('T5 iOS mime 选择错误：' + iosMime);
+  if (andMime.startsWith('audio/webm')) log('PASS', `T5 Android 选中 ${andMime}`);
+  else fail('T5 Android mime 选择错误：' + andMime);
+  if (x5Mime === '') log('PASS', 'T5 微信 X5（均不支持）返回空串 → 走 MediaRecorder 默认值');
+  else fail('T5 X5 分支异常：' + x5Mime);
+
+  // T6 极短音频必须被拒绝（而不是抛"录音过短"以外的异常）
+  try {
+    feats(new Float32Array(100));
+    fail('T6 极短音频未被拒绝');
+  } catch (e) {
+    if (/太短|过短/.test(e.message)) log('PASS', 'T6 极短音频被正确拒绝：' + e.message);
+    else fail('T6 抛出错误文案不友好：' + e.message);
+  }
+
+  const bad = lines.filter(l => l.includes('[FAIL]')).length;
+  document.title = bad ? `SELFAIL-${bad}` : 'SELPASS';
+  log(bad ? 'FAIL' : 'PASS', bad ? `总判定：失败 ${bad} 项` : '总判定：全部通过');
+}
+main().catch(e => { fail('自检崩溃：' + e.message); document.title = 'SELFAIL-1'; });
+</script>
+</body>
+</html>

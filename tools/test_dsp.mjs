@@ -58,3 +58,30 @@ for (let p = 1; p < r1.pairs; p++) {
 }
 console.log('monotonic:', ok);
 console.log(Math.abs(r0.norm) < 0.05 && sc1.indexOf(Math.min(...sc1)) === 2 && ok ? 'PASS' : 'FAIL');
+
+// ---- 回归：不同帧数必须不崩溃，且路径 i/j 分别落在各自数组范围内 ----
+{
+  const mk = (n, off = 0) => Array.from({ length: n }, (_, i) => {
+    const v = new Float32Array(4);
+    for (let k = 0; k < 4; k++) v[k] = Math.sin((i + off) * 0.31 + k) + k * 0.1;
+    return v;
+  });
+  for (const [na, nb] of [[120, 75], [75, 120], [200, 199], [120, 120]]) {
+    const A = mk(na), B = mk(nb, 3);
+    const res = dtw(A, B, 0.35);
+    let ok = true, maxI = 0, maxJ = 0;
+    for (let p = 0; p < res.pairs; p++) {
+      const i = res.path[p * 2], j = res.path[p * 2 + 1];
+      if (i >= A.length || j >= B.length || i < 0 || j < 0) { ok = false; break; }
+      maxI = Math.max(maxI, i); maxJ = Math.max(maxJ, j);
+    }
+    const ranges = wordRangesBySyllable([1, 2, 1], A.length, []);
+    const costs = wordCosts(A, B, res, ranges);
+    const sane = costs.length === 3 && costs.every(c => Number.isFinite(c));
+    if (!ok || !sane) {
+      console.log('FAIL 不同帧数回退', na, nb, 'ok=' + ok, 'costs=' + sane);
+      process.exit(1);
+    }
+  }
+  console.log('PASS 不同帧数 DTW 路径与打分均正常（120/75、75/120、200/199、120/120）');
+}

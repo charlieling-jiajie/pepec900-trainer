@@ -1,10 +1,10 @@
-import CORPUS from './data/corpus.js?v=13';
-import { compare } from './lib/diff.js?v=13';
-import { asrEnv, transcribe } from './lib/asr.js?v=13';
-import { track } from './lib/track.js?v=13';
-import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=13';
+import CORPUS from './data/corpus.js?v=15';
+import { compare } from './lib/diff.js?v=15';
+import { asrEnv, transcribe } from './lib/asr.js?v=15';
+import { track } from './lib/track.js?v=15';
+import { logMel, trimSilence, cmvn, dtw, wordCosts, wordRangesBySyllable, scoreWords } from './lib/dsp.js?v=15';
 
-const ASSET_V = '?v=13';   // 换语料或换音色时递增，强制绕过浏览器缓存
+const ASSET_V = '?v=15';   // 换语料或换音色时递增，强制绕过浏览器缓存
 
 const S = CORPUS.sentences;
 const CH = CORPUS.meta.chapters;
@@ -139,6 +139,25 @@ function applyReveal() {
   el.reveal.classList.toggle('on', st.reveal);
 }
 
+function initWeChatGuide() {
+  const wechat = /MicroMessenger/i.test(navigator.userAgent || '');
+  const g = document.getElementById('wxGuide');
+  if (!g) return;
+  const close = document.getElementById('wxGuideClose');
+  if (close) close.onclick = () => { g.hidden = true; };
+  if (!wechat) return;
+  g.hidden = false;
+  const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+    && typeof window.MediaRecorder !== 'undefined';
+  if (!canRecord) {
+    // 微信内核不支持录音时，明确禁用，避免"点了没反应"
+    if (el.rec) el.rec.disabled = true;
+    if (el.again) el.again.disabled = true;
+    el.warn.classList.add('on');
+    el.warn.textContent = '当前微信内置浏览器不支持录音，请点右上角「···」→「在浏览器中打开」。';
+  }
+}
+
 function initASRGate() {
   const env = asrEnv();
   if (!env.ok) {
@@ -211,12 +230,31 @@ function drawProgress(p) {
 }
 
 /* ---------------- 录音 ---------------- */
-let stream, mr, chunks = [], ac, analyser, srcNode, rafId, t0, recTimer;
+let stream, mr, chunks = [], ac, analyser, srcNode, rafId, t0, recTimer, stopWatchdog, recFinalized;
 
 async function ensureAC() {
   if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
-  if (ac.state === 'suspended') await ac.resume();
+  // iOS / 微信内核：AudioContext 必须在用户手势里 resume，否则会一直 suspended
+  if (ac.state === 'suspended') { try { await ac.resume(); } catch {} }
   return ac;
+}
+
+// 页面任意一次触摸都预热音频上下文（iOS/微信的要求）
+function armAudioUnlock() {
+  const once = async () => { try { await ensureAC(); } catch {} };
+  ['touchstart', 'pointerdown', 'click', 'keydown'].forEach(ev =>
+    window.addEventListener(ev, once, { once: true, passive: true }));
+}
+
+/** 按平台优先级挑 MediaRecorder 的 mimeType */
+function pickMime() {
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const candidates = ios
+    ? ['audio/mp4', 'audio/mp4;codecs=mp4a.40.2', 'video/mp4', 'audio/webm;codecs=opus', 'audio/webm']
+    : ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/ogg'];
+  if (!window.MediaRecorder) return '';
+  return candidates.find(m => { try { return MediaRecorder.isTypeSupported(m); } catch { return false; } }) || '';
 }
 
 async function startRec() {
@@ -232,9 +270,15 @@ async function startRec() {
     return;
   }
   chunks = [];
-  const mime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/ogg']
-    .find(m => window.MediaRecorder && MediaRecorder.isTypeSupported(m)) || '';
-  mr = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+  const mime = pickMime();
+  try {
+    mr = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream);
+  } catch (e) {
+    el.warn.classList.add('on');
+    el.warn.textContent = '本机不支持录音：' + (e && e.message ? e.message : e) + '。请改用系统浏览器（Safari / Chrome）打开。';
+    stream.getTracks().forEach(t => t.stop());
+    return;
+  }
   mr.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
   mr.onstop = onRecStop;
 
@@ -244,6 +288,7 @@ async function startRec() {
   analyser.fftSize = 1024;
   srcNode.connect(analyser);
 
+  recFinalized = false;
   mr.start(120);
   st.recording = true;
   el.rec.classList.add('rec-on');
@@ -284,16 +329,33 @@ function stopRec() {
   st.recording = false;
   clearInterval(recTimer);
   cancelAnimationFrame(rafId);
-  try { mr.stop(); } catch {}
-  stream && stream.getTracks().forEach(t => t.stop());
   el.rec.classList.remove('rec-on');
   el.rec.disabled = false; el.play.disabled = false; el.stop.disabled = true;
+  try { if (mr && mr.state !== 'inactive') mr.stop(); } catch {}
+  // iOS / X5 内核：onstop 可能不触发，3 秒后兜底走一次评分
+  clearTimeout(stopWatchdog);
+  stopWatchdog = setTimeout(() => { if (!recFinalized) onRecStop(); }, 3000);
+}
+
+function stopStreamTracks() {
+  try { stream && stream.getTracks().forEach(t => t.stop()); } catch {}
 }
 
 async function onRecStop() {
-  const blob = new Blob(chunks, { type: chunks[0] ? chunks[0].type : 'audio/webm' });
+  if (recFinalized) return;
+  recFinalized = true;
+  clearTimeout(stopWatchdog);
+  // 必须等 MediaRecorder 把文件写完再停采集，否则 iOS 上 mp4 缺 moov 头，解码必失败
+  setTimeout(stopStreamTracks, 50);
+
+  const type = (mr && mr.mimeType) || (chunks[0] && chunks[0].type) || 'audio/webm';
+  const blob = new Blob(chunks, { type });
   el.meter.classList.remove('on');
-  if (blob.size < 2000) { el.result.classList.add('on'); el.scoreVal.textContent = '—'; el.verdict.textContent = '录音太短，请重录。'; return; }
+  if (blob.size < 2000) {
+    el.result.classList.add('on'); el.scoreVal.textContent = '—';
+    el.verdict.textContent = '录音太短或没有采集到声音，请重录。';
+    return;
+  }
   el.result.classList.add('on');
   el.scoreVal.textContent = '…';
   el.verdict.textContent = '正在比对…';
@@ -301,17 +363,44 @@ async function onRecStop() {
     await score(blob);
   } catch (e) {
     el.scoreVal.textContent = '—';
-    el.verdict.textContent = '比对失败：' + (e && e.message ? e.message : e);
+    el.verdict.textContent = describeError(e);
     console.error(e);
   }
+}
+
+/** 把解码/评分错误翻译成人话 */
+function describeError(e) {
+  const msg = (e && e.message) ? e.message : String(e);
+  if (/decode|Encoding|Unable/i.test(msg)) {
+    return '录音文件无法解码（浏览器录制格式问题）。请重录一次；若仍失败，改用 Safari 或 Chrome 打开。';
+  }
+  return '比对失败：' + msg;
 }
 
 /* ---------------- 音频解码 ---------------- */
 const refCache = new Map();
 
 async function decodeTo16k(arrayBuffer) {
-  const a = await ensureAC();
-  const buf = await a.decodeAudioData(arrayBuffer.slice(0));
+  // 用 OfflineAudioContext 解码：它不依赖运行状态，不会因 iOS/微信里
+  // AudioContext 处于 suspended 而卡死（这是"录音后无评分"的另一诱因）
+  let decCtx;
+  try {
+    decCtx = new OfflineAudioContext(1, 1, 16000);
+  } catch {
+    decCtx = await ensureAC();
+  }
+  let buf;
+  try {
+    buf = await decCtx.decodeAudioData(arrayBuffer.slice(0));
+  } catch (err) {
+    // 旧版 Safari 的 decodeAudioData 只认回调形式，重试一次
+    buf = await new Promise((res, rej) => {
+      try {
+        decCtx.decodeAudioData(arrayBuffer.slice(0), res, rej);
+      } catch (e2) { rej(err || e2); }
+    });
+  }
+  if (!buf || !buf.length) throw new Error('录音文件无法解码');
   if (Math.abs(buf.sampleRate - 16000) < 1 && buf.numberOfChannels === 1) {
     return buf.getChannelData(0).slice();
   }
@@ -334,7 +423,7 @@ async function refSamples(id) {
 
 /* ---------------- 评分 ---------------- */
 function feats(samples) {
-  if (samples.length < 400 * 8) throw new Error('录音过短');
+  if (!samples || samples.length < 4000) throw new Error('录音太短，请重录（至少 0.25 秒）');
   const { frames, energy } = logMel(samples, 16000);
   const [a, b] = trimSilence(energy);
   const cut = frames.slice(a, b + 1);
@@ -354,6 +443,7 @@ async function score(blob) {
   const res = dtw(A.n, B.n, 0.35);
   const costs = wordCosts(A.n, B.n, res, ranges);
   const sc = scoreWords(costs);
+  if (!sc.length) throw new Error('未取到有效音频帧，请重录');
 
   st.lastUser = user; st.lastSentence = s;
   const refDur = ref.length / 16000, userDur = user.length / 16000;
@@ -511,6 +601,8 @@ window.addEventListener('resize', () => { fitCanvas(); drawIdle(); });
 /* ---------------- 启动 ---------------- */
 renderBar();
 initASRGate();
+initWeChatGuide();
+armAudioUnlock();
 next();
 track('open');
 drawIdle();

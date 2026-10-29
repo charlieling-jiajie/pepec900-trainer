@@ -53,7 +53,11 @@ globalThis.OfflineAudioContext = function () { return stub('offline'); };
 globalThis.MediaRecorder = function () { return stub('mr'); };
 MediaRecorder.isTypeSupported = () => false;
 Object.defineProperty(globalThis, 'navigator', {
-  value: { mediaDevices: { getUserMedia: async () => stub('stream') } },
+  value: {
+    mediaDevices: { getUserMedia: async () => stub('stream') },
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) TestHarness',
+    sendBeacon: () => true,          // 屏蔽真实上报，避免 Node 22 undici 在桩环境崩溃
+  },
   configurable: true,
 });
 
