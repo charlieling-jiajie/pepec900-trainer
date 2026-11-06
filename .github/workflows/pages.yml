@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false   # 不取消进行中的部署，保证生产部署完整跑完
 
 jobs:
   deploy:
@@ -22,6 +22,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true            # 防止未来模型文件转为 LFS 指针后部署出坏文件
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

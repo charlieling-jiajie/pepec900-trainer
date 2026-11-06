@@ -7,15 +7,17 @@ PEPEC 900 语料构建：PDF -> 900 句 -> ICAO 口语形式（spoken form）
 {
   "meta": {...},
   "sentences": [
-    {"id":1,"ch":1,"text":"Maintaining FL310.","spoken":"maintaining flight level tree wun zero",
-     "words":["maintaining","flight","level","tree","wun","zero"],"hints":["tree","wun"],"syl":[3,1,2,1,1,2]}
+    {"id":1,"ch":1,"text":"Maintaining FL310.","spoken":"maintaining flight level tree one zero",
+     "words":["maintaining","flight","level","tree","one","zero"],"hints":["tree"],"syl":[3,1,2,1,1,2]}
   ]
 }
 """
 import json, re, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PDF = r"C:\Users\31383\Desktop\PEPEC900.pdf"
+# PDF 路径解析：命令行参数 > 环境变量 PEPEC_PDF > 本机默认位置
+DEFAULT_PDF = r"C:\Users\31383\Desktop\PEPEC900.pdf"
+PDF = (sys.argv[1] if len(sys.argv) > 1 else None) or os.environ.get("PEPEC_PDF") or DEFAULT_PDF
 OUT = os.path.join(ROOT, "data", "corpus.json")
 
 CHAPTERS = [
@@ -303,6 +305,11 @@ def syllables(w: str) -> int:
 
 
 def main():
+    if not os.path.isfile(PDF):
+        print(f"[!] 找不到原始 PDF：{PDF}")
+        print("    用法：python tools/build_corpus.py [PDF 路径]")
+        print("    或设置环境变量 PEPEC_PDF 指向 PEPEC900.pdf")
+        sys.exit(1)
     import pdfplumber
     lines = []
     with pdfplumber.open(PDF) as pdf:

@@ -1,5 +1,9 @@
 # PEPEC 900 复诵训练器 — 技术规划 v0.1
 
+> **⚠️ 已存档（历史规划，仅作参考）**：本文是立项时的技术规划（FastAPI + React + wav2vec2 GOP 方案），
+> 与最终实现（纯静态前端 + DTW 声学比对 + Whisper 识别，见 `README.md` / `docs/HANDOVER.md`）完全不同。
+> 文中提到的 `backend/`、`docker-compose.yml`、`assets/audio/*.m4a`、`data/pepec900.json` 等产物均已废弃或删除，请勿按本文搭建。
+
 > 目标：随机抽取 PEPEC 900 句中的句子 → 播报标准参考音 → 使用者复诵录音 → **不依赖任何大模型**判定"哪里读对、哪里读错"。
 > 语料来源：`PEPEC900.pdf`（中国民航局飞行标准司，2014-08，66 页，8 章，900 句）。
 

@@ -15,8 +15,8 @@ https://charlieling-jiajie.github.io/pepec900-trainer/
 手机浏览器可"添加到主屏幕"，体验接近 App。
 
 **本地用**
-1. 双击 `start.bat`（需要 Python 3，仅用来起一个静态服务器）
-2. 浏览器自动打开 `http://127.0.0.1:8080/`
+1. 双击 `start.bat`（需要 Python 3.7+，仅用来起一个本地静态服务器）
+2. 服务就绪后浏览器自动打开 `http://127.0.0.1:8080/`
 
 > 不要直接双击 `web/index.html`：浏览器会因安全限制拒绝读取音频文件，评分不可用。
 
@@ -90,7 +90,7 @@ pepec900-trainer/
 │  ├─ app.js                # 交互 + 录音 + 评分调度
 │  ├─ lib/dsp.js            # FFT / 对数梅尔 / DTW / 逐词打分（纯函数）
 │  ├─ data/corpus.js        # 由 corpus.json 生成的语料模块
-│  └─ audio/{1..900}.mp3    # 参考音（约 28 MB）
+│  └─ audio/{1..900}.mp3    # 参考音（约 36 MB）
 ├─ data/
 │  ├─ corpus.json           # 900 句：原文 / 口语形式 / 词表 / 章节 / 读法提示
 │  └─ audio_meta.json       # 参考音时长
@@ -98,6 +98,7 @@ pepec900-trainer/
 │  ├─ build_corpus.py       # PDF → 900 句 → ICAO 口语形式
 │  ├─ build_audio.py        # 口语形式 → 参考音（离线 TTS）
 │  ├─ export_web.py         # corpus.json → web/data/corpus.js
+│  ├─ serve.py              # 本地静态服务器（start.bat 调用）
 │  └─ test_dsp.mjs          # DSP 链路自检（Node）
 ├─ models/                  # TTS 语音（不入库，脚本下载）
 └─ start.bat
@@ -205,7 +206,7 @@ git push -u origin main
 **更新流程**：改完 → `git add -A && git commit -m "..." && git push`，1–2 分钟后站点自动更新。
 页面与资源都带 `?v=N` 版本号，改版后记得同时把 `v` 加一，避免浏览器用旧缓存。
 
-**仓库体积**：`web/` 约 40 MB（900 条音频）。首次推送用的是压缩后的单条初始提交，之后只推增量。
+**仓库体积**：`web/` 约 90 MB（900 条音频约 36 MB + Whisper 模型约 42 MB + transformers.js 运行时约 10 MB）。首次推送用的是压缩后的单条初始提交，之后只推增量。
 
 > 语料为民航局公开发布的教材文本，仅用于学习交流；商用或再分发请自行确认授权。
 
