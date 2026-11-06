@@ -102,48 +102,40 @@
   ],
   "digitNormal": "其余数字按常规读法：zero / one / two / four / five / six / seven / eight",
   "abbr": {
-   "ac": "alfa charlie",
+   "ac": "a c",
    "ak": "alfa kilo",
-   "ams": "alfa mike sierra",
-   "apu": "alfa papa uniform",
-   "asda": "alfa sierra delta alfa",
+   "apu": "a p u",
+   "asda": "a s d a",
    "atc": "a t c",
    "au": "alfa uniform",
    "bk": "bravo kilo",
    "bkm": "bravo kilo mike",
-   "bus": "bravo uniform sierra",
-   "cat": "charlie alfa tango",
-   "cdu": "charlie delta uniform",
+   "cdu": "c d u",
    "cgo": "charlie golf oscar",
    "ck": "charlie kilo",
    "cpdlc": "c p d l c",
-   "cpr": "charlie papa romeo",
+   "cpr": "c p r",
    "da": "delta alfa",
    "dapro": "delta alfa papa romeo oscar",
    "dc": "delta charlie",
    "dg": "delta golf",
    "dme": "d m e",
    "effg": "echo foxtrot foxtrot golf",
-   "egt": "echo golf tango",
+   "egt": "e g t",
    "elt": "e l t",
-   "eta": "echo tango alfa",
+   "eta": "e t a",
    "fl": "flight level",
-   "fms": "foxtrot mike sierra",
-   "fod": "foxtrot oscar delta",
+   "fms": "f m s",
+   "fod": "f o d",
    "fupad": "foxtrot uniform papa alfa delta",
-   "gps": "golf papa sierra",
-   "gpws": "golf papa whiskey sierra",
+   "gps": "g p s",
+   "gpws": "g p w s",
    "hf": "h f",
    "hrb": "hotel romeo bravo",
-   "hur": "hotel uniform romeo",
    "hz": "hotel zulu",
-   "iiib": "india india india bravo",
-   "iiic": "india india india charlie",
    "ils": "i l s",
-   "imc": "india mike charlie",
+   "imc": "i m c",
    "ip": "india papa",
-   "jemmy": "juliett echo mike mike yankee",
-   "jfk": "juliett foxtrot kilo",
    "jmu": "juliett mike uniform",
    "jo": "juliett oscar",
    "kodap": "kilo oscar delta alfa papa",
@@ -152,38 +144,33 @@
    "llk": "lima lima kilo",
    "lmn": "lima mike november",
    "ln": "lima november",
-   "lv": "lima victor",
    "lx": "lima x-ray",
-   "mea": "mike echo alfa",
+   "mea": "m e a",
    "ml": "mike lima",
    "mlt": "mike lima tango",
    "mqr": "mike quebec romeo",
    "ndb": "n d b",
    "nld": "november lima delta",
-   "nm": "november mike",
+   "nm": "nautical miles",
    "oblik": "oscar bravo lima india kilo",
-   "papi": "papa alfa papa india",
-   "per": "papa echo romeo",
    "plt": "papa lima tango",
    "pou": "papa oscar uniform",
    "qnh": "q n h",
-   "ra": "romeo alfa",
+   "ra": "r a",
    "rnav": "ar nav",
-   "rnp": "romeo november papa",
-   "rvr": "romeo victor romeo",
-   "rvsm": "romeo victor sierra mike",
+   "rnp": "r n p",
+   "rvr": "r v r",
+   "rvsm": "r v s m",
    "selcalcode": "sierra echo lima charlie alfa lima charlie oscar delta echo",
    "sha": "sierra hotel alfa",
-   "sid": "sierra india delta",
+   "sid": "s i d",
    "sigmet": "sig met",
-   "st": "sierra tango",
-   "sy": "sierra yankee",
    "tb": "tango bravo",
    "tcas": "t cas",
-   "toda": "tango oscar delta alfa",
-   "tora": "tango oscar romeo alfa",
+   "toda": "t o d a",
+   "tora": "t o r a",
    "vhf": "v h f",
-   "vmc": "victor mike charlie",
+   "vmc": "v m c",
    "vor": "v o r",
    "wha": "whiskey hotel alfa",
    "wuh": "whiskey uniform hotel",
@@ -319,8 +306,8 @@
    "id": 5,
    "ch": 1,
    "text": "Continue descent to 3000 feet，QNH 1012.",
-   "spoken": "continue descent to three thousand feet q n h one zero one two",
-   "tts": "continue descent to three thousand feet, q n h one zero one two.",
+   "spoken": "continue descent to tree thousand feet q n h one zero one two",
+   "tts": "continue descent to tree thousand feet, q n h one zero one two.",
    "gaps": [
     {
      "at": 6,
@@ -331,7 +318,7 @@
     "continue",
     "descent",
     "to",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "q",
@@ -358,7 +345,8 @@
     1
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -810,8 +798,8 @@
    "id": 18,
    "ch": 1,
    "text": "Right heading 330, descending to 3000 feet, cleared for ILS approach Runway 36R.",
-   "spoken": "right heading tree tree zero descending to three thousand feet cleared for i l s approach runway tree six right",
-   "tts": "right heading tree tree zero, descending to three thousand feet, cleared for i l s approach runway tree six right.",
+   "spoken": "right heading tree tree zero descending to tree thousand feet cleared for i l s approach runway tree six right",
+   "tts": "right heading tree tree zero, descending to tree thousand feet, cleared for i l s approach runway tree six right.",
    "gaps": [
     {
      "at": 5,
@@ -830,7 +818,7 @@
     "zero",
     "descending",
     "to",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "cleared",
@@ -875,8 +863,8 @@
    "id": 19,
    "ch": 1,
    "text": "Descend to 3000 feet, information P is current.",
-   "spoken": "descend to three thousand feet information papa is current",
-   "tts": "descend to three thousand feet, information papa is current.",
+   "spoken": "descend to tree thousand feet information papa is current",
+   "tts": "descend to tree thousand feet, information papa is current.",
    "gaps": [
     {
      "at": 5,
@@ -886,7 +874,7 @@
    "words": [
     "descend",
     "to",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "information",
@@ -906,7 +894,8 @@
     2
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -1172,8 +1161,8 @@
    "id": 27,
    "ch": 1,
    "text": "Maintaining own separation and VMC, descending to FL80.",
-   "spoken": "maintaining own separation and victor mike charlie descending to flight level eight zero",
-   "tts": "maintaining own separation and victor mike charlie, descending to flight level eight zero.",
+   "spoken": "maintaining own separation and v m c descending to flight level eight zero",
+   "tts": "maintaining own separation and v m c, descending to flight level eight zero.",
    "gaps": [
     {
      "at": 7,
@@ -1185,9 +1174,9 @@
     "own",
     "separation",
     "and",
-    "victor",
-    "mike",
-    "charlie",
+    "v",
+    "m",
+    "c",
     "descending",
     "to",
     "flight",
@@ -1200,9 +1189,9 @@
     1,
     4,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     3,
     1,
     1,
@@ -1250,8 +1239,8 @@
    "id": 29,
    "ch": 1,
    "text": "Cancel SID, track direct to LLK, climb to and maintain FL110.",
-   "spoken": "cancel sierra india delta track direct to lima lima kilo climb to and maintain flight level one one zero",
-   "tts": "cancel sierra india delta, track direct to lima lima kilo, climb to and maintain flight level one one zero.",
+   "spoken": "cancel s i d track direct to lima lima kilo climb to and maintain flight level one one zero",
+   "tts": "cancel s i d, track direct to lima lima kilo, climb to and maintain flight level one one zero.",
    "gaps": [
     {
      "at": 4,
@@ -1264,9 +1253,9 @@
    ],
    "words": [
     "cancel",
-    "sierra",
-    "india",
-    "delta",
+    "s",
+    "i",
+    "d",
     "track",
     "direct",
     "to",
@@ -1285,9 +1274,9 @@
    ],
    "syl": [
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     1,
     2,
     1,
@@ -1962,8 +1951,8 @@
    "id": 51,
    "ch": 1,
    "text": "15NM to HRB, FL290, tracking to JMU, squawking 6543.",
-   "spoken": "one five november mike to hotel romeo bravo flight level two niner zero tracking to juliett mike uniform squawking six five four tree",
-   "tts": "one five november mike to hotel romeo bravo, flight level two niner zero, tracking to juliett mike uniform, squawking six five four tree.",
+   "spoken": "one five nautical miles to hotel romeo bravo flight level two niner zero tracking to juliett mike uniform squawking six five four tree",
+   "tts": "one five nautical miles to hotel romeo bravo, flight level two niner zero, tracking to juliett mike uniform, squawking six five four tree.",
    "gaps": [
     {
      "at": 8,
@@ -1981,8 +1970,8 @@
    "words": [
     "one",
     "five",
-    "november",
-    "mike",
+    "nautical",
+    "miles",
     "to",
     "hotel",
     "romeo",
@@ -3969,8 +3958,8 @@
    "id": 87,
    "ch": 2,
    "text": "Cleared to destination, BK02 RNAV Departure, initially 3000 feet, departure frequency 125.4, squawk 3311.",
-   "spoken": "cleared to destination bravo kilo zero two ar nav departure initially three thousand feet departure frequency one two five decimal four squawk tree tree one one",
-   "tts": "cleared to destination, bravo kilo zero two ar nav departure, initially three thousand feet, departure frequency one two five decimal four, squawk tree tree one one.",
+   "spoken": "cleared to destination bravo kilo zero two ar nav departure initially tree thousand feet departure frequency one two five decimal four squawk tree tree one one",
+   "tts": "cleared to destination, bravo kilo zero two ar nav departure, initially tree thousand feet, departure frequency one two five decimal four, squawk tree tree one one.",
    "gaps": [
     {
      "at": 3,
@@ -4001,7 +3990,7 @@
     "nav",
     "departure",
     "initially",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "departure",
@@ -4055,15 +4044,15 @@
    "id": 88,
    "ch": 2,
    "text": "Say again all after 3000 feet.",
-   "spoken": "say again all after three thousand feet",
-   "tts": "say again all after three thousand feet.",
+   "spoken": "say again all after tree thousand feet",
+   "tts": "say again all after tree thousand feet.",
    "gaps": [],
    "words": [
     "say",
     "again",
     "all",
     "after",
-    "three",
+    "tree",
     "thousand",
     "feet"
    ],
@@ -4076,7 +4065,9 @@
     2,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 89,
@@ -5577,8 +5568,8 @@
    "id": 136,
    "ch": 2,
    "text": "After departure, climb straight ahead until 3000 feet.",
-   "spoken": "after departure climb straight ahead until three thousand feet",
-   "tts": "after departure, climb straight ahead until three thousand feet.",
+   "spoken": "after departure climb straight ahead until tree thousand feet",
+   "tts": "after departure, climb straight ahead until tree thousand feet.",
    "gaps": [
     {
      "at": 2,
@@ -5592,7 +5583,7 @@
     "straight",
     "ahead",
     "until",
-    "three",
+    "tree",
     "thousand",
     "feet"
    ],
@@ -5607,14 +5598,16 @@
     2,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 137,
    "ch": 2,
    "text": "Cancel SID, maintain runway heading.",
-   "spoken": "cancel sierra india delta maintain runway heading",
-   "tts": "cancel sierra india delta, maintain runway heading.",
+   "spoken": "cancel s i d maintain runway heading",
+   "tts": "cancel s i d, maintain runway heading.",
    "gaps": [
     {
      "at": 4,
@@ -5623,18 +5616,18 @@
    ],
    "words": [
     "cancel",
-    "sierra",
-    "india",
-    "delta",
+    "s",
+    "i",
+    "d",
     "maintain",
     "runway",
     "heading"
    ],
    "syl": [
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     2,
     2
@@ -6248,18 +6241,18 @@
    "id": 158,
    "ch": 2,
    "text": "Request Takeoff Runway Available (TORA) from intersection C2.",
-   "spoken": "request takeoff runway available tango oscar romeo alfa from intersection charlie two",
-   "tts": "request takeoff runway available tango oscar romeo alfa from intersection charlie two.",
+   "spoken": "request takeoff runway available t o r a from intersection charlie two",
+   "tts": "request takeoff runway available t o r a from intersection charlie two.",
    "gaps": [],
    "words": [
     "request",
     "takeoff",
     "runway",
     "available",
-    "tango",
-    "oscar",
-    "romeo",
-    "alfa",
+    "t",
+    "o",
+    "r",
+    "a",
     "from",
     "intersection",
     "charlie",
@@ -6270,10 +6263,10 @@
     2,
     2,
     4,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     1,
     4,
     2,
@@ -6287,18 +6280,18 @@
    "id": 159,
    "ch": 2,
    "text": "Request Accelerate-Stop Distance Available (ASDA) from intersection D1.",
-   "spoken": "request accelerate-stop distance available alfa sierra delta alfa from intersection delta one",
-   "tts": "request accelerate-stop distance available alfa sierra delta alfa from intersection delta one.",
+   "spoken": "request accelerate-stop distance available a s d a from intersection delta one",
+   "tts": "request accelerate-stop distance available a s d a from intersection delta one.",
    "gaps": [],
    "words": [
     "request",
     "accelerate-stop",
     "distance",
     "available",
-    "alfa",
-    "sierra",
-    "delta",
-    "alfa",
+    "a",
+    "s",
+    "d",
+    "a",
     "from",
     "intersection",
     "delta",
@@ -6309,10 +6302,10 @@
     6,
     3,
     4,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     1,
     4,
     2,
@@ -6326,18 +6319,18 @@
    "id": 160,
    "ch": 2,
    "text": "Request Takeoff Distance Available (TODA) from intersection E3.",
-   "spoken": "request takeoff distance available tango oscar delta alfa from intersection echo tree",
-   "tts": "request takeoff distance available tango oscar delta alfa from intersection echo tree.",
+   "spoken": "request takeoff distance available t o d a from intersection echo tree",
+   "tts": "request takeoff distance available t o d a from intersection echo tree.",
    "gaps": [],
    "words": [
     "request",
     "takeoff",
     "distance",
     "available",
-    "tango",
-    "oscar",
-    "delta",
-    "alfa",
+    "t",
+    "o",
+    "d",
+    "a",
     "from",
     "intersection",
     "echo",
@@ -6348,10 +6341,10 @@
     2,
     3,
     4,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     1,
     4,
     2,
@@ -7127,8 +7120,8 @@
    "id": 185,
    "ch": 2,
    "text": "Follow the standard missed approach procedure, climbing to 3000 feet.",
-   "spoken": "follow the standard missed approach procedure climbing to three thousand feet",
-   "tts": "follow the standard missed approach procedure, climbing to three thousand feet.",
+   "spoken": "follow the standard missed approach procedure climbing to tree thousand feet",
+   "tts": "follow the standard missed approach procedure, climbing to tree thousand feet.",
    "gaps": [
     {
      "at": 6,
@@ -7144,7 +7137,7 @@
     "procedure",
     "climbing",
     "to",
-    "three",
+    "tree",
     "thousand",
     "feet"
    ],
@@ -7161,7 +7154,9 @@
     2,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 186,
@@ -7361,30 +7356,22 @@
    "id": 192,
    "ch": 2,
    "text": "Confirm PAPI light unserviceable.",
-   "spoken": "confirm papa alfa papa india light unserviceable",
-   "tts": "confirm papa alfa papa india light unserviceable.",
+   "spoken": "confirm papi light unserviceable",
+   "tts": "confirm papi light unserviceable.",
    "gaps": [],
    "words": [
     "confirm",
-    "papa",
-    "alfa",
-    "papa",
-    "india",
+    "papi",
     "light",
     "unserviceable"
    ],
    "syl": [
     2,
     2,
-    2,
-    2,
-    2,
     1,
     5
    ],
-   "hints": [
-    "alpha"
-   ]
+   "hints": []
   },
   {
    "id": 193,
@@ -7541,8 +7528,8 @@
    "id": 198,
    "ch": 2,
    "text": "Thicker patches of fog exist further along the runway. RVR significantly reduced.",
-   "spoken": "thicker patches of fog exist further along the runway romeo victor romeo significantly reduced",
-   "tts": "thicker patches of fog exist further along the runway. romeo victor romeo significantly reduced.",
+   "spoken": "thicker patches of fog exist further along the runway r v r significantly reduced",
+   "tts": "thicker patches of fog exist further along the runway. r v r significantly reduced.",
    "gaps": [
     {
      "at": 9,
@@ -7559,9 +7546,9 @@
     "along",
     "the",
     "runway",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "significantly",
     "reduced"
    ],
@@ -7575,9 +7562,9 @@
     2,
     1,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     5,
     3
    ],
@@ -7589,15 +7576,15 @@
    "id": 199,
    "ch": 2,
    "text": "Confirm current RVR less than 400 meters.",
-   "spoken": "confirm current romeo victor romeo less than four zero zero meters",
-   "tts": "confirm current romeo victor romeo less than four zero zero meters.",
+   "spoken": "confirm current r v r less than four zero zero meters",
+   "tts": "confirm current r v r less than four zero zero meters.",
    "gaps": [],
    "words": [
     "confirm",
     "current",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "less",
     "than",
     "four",
@@ -7608,9 +7595,9 @@
    "syl": [
     2,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     1,
     1,
     1,
@@ -7657,23 +7644,23 @@
    "id": 201,
    "ch": 2,
    "text": "Is mid-point RVR available?",
-   "spoken": "is mid-point romeo victor romeo available",
-   "tts": "is mid-point romeo victor romeo available?",
+   "spoken": "is mid-point r v r available",
+   "tts": "is mid-point r v r available?",
    "gaps": [],
    "words": [
     "is",
     "mid-point",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "available"
    ],
    "syl": [
     1,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     4
    ],
    "hints": [
@@ -7684,23 +7671,23 @@
    "id": 202,
    "ch": 2,
    "text": "Confirm RVR Runway 27.",
-   "spoken": "confirm romeo victor romeo runway two seven",
-   "tts": "confirm romeo victor romeo runway two seven.",
+   "spoken": "confirm r v r runway two seven",
+   "tts": "confirm r v r runway two seven.",
    "gaps": [],
    "words": [
     "confirm",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "runway",
     "two",
     "seven"
    ],
    "syl": [
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     2
@@ -7713,13 +7700,13 @@
    "id": 203,
    "ch": 2,
    "text": "RVR Runway 27 is 600 meters.",
-   "spoken": "romeo victor romeo runway two seven is six zero zero meters",
-   "tts": "romeo victor romeo runway two seven is six zero zero meters.",
+   "spoken": "r v r runway two seven is six zero zero meters",
+   "tts": "r v r runway two seven is six zero zero meters.",
    "gaps": [],
    "words": [
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "runway",
     "two",
     "seven",
@@ -7730,9 +7717,9 @@
     "meters"
    ],
    "syl": [
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     2,
@@ -7750,15 +7737,15 @@
    "id": 204,
    "ch": 2,
    "text": "Confirm touchdown RVR greater than 350 meters.",
-   "spoken": "confirm touchdown romeo victor romeo greater than tree five zero meters",
-   "tts": "confirm touchdown romeo victor romeo greater than tree five zero meters.",
+   "spoken": "confirm touchdown r v r greater than tree five zero meters",
+   "tts": "confirm touchdown r v r greater than tree five zero meters.",
    "gaps": [],
    "words": [
     "confirm",
     "touchdown",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "greater",
     "than",
     "tree",
@@ -7769,9 +7756,9 @@
    "syl": [
     2,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     1,
@@ -7788,15 +7775,15 @@
    "id": 205,
    "ch": 2,
    "text": "Confirm stop-end RVR 150 meters.",
-   "spoken": "confirm stop-end romeo victor romeo one five zero meters",
-   "tts": "confirm stop-end romeo victor romeo one five zero meters.",
+   "spoken": "confirm stop-end r v r one five zero meters",
+   "tts": "confirm stop-end r v r one five zero meters.",
    "gaps": [],
    "words": [
     "confirm",
     "stop-end",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "one",
     "five",
     "zero",
@@ -7805,9 +7792,9 @@
    "syl": [
     2,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     2,
     2,
@@ -7821,15 +7808,15 @@
    "id": 206,
    "ch": 2,
    "text": "Confirm midpoint RVR more than 550 meters.",
-   "spoken": "confirm midpoint romeo victor romeo more than five five zero meters",
-   "tts": "confirm midpoint romeo victor romeo more than five five zero meters.",
+   "spoken": "confirm midpoint r v r more than five five zero meters",
+   "tts": "confirm midpoint r v r more than five five zero meters.",
    "gaps": [],
    "words": [
     "confirm",
     "midpoint",
-    "romeo",
-    "victor",
-    "romeo",
+    "r",
+    "v",
+    "r",
     "more",
     "than",
     "five",
@@ -7840,9 +7827,9 @@
    "syl": [
     2,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     2,
@@ -8483,11 +8470,11 @@
    "id": 229,
    "ch": 3,
    "text": "Three sixty turn left.",
-   "spoken": "three sixty turn left",
-   "tts": "three sixty turn left.",
+   "spoken": "tree sixty turn left",
+   "tts": "tree sixty turn left.",
    "gaps": [],
    "words": [
-    "three",
+    "tree",
     "sixty",
     "turn",
     "left"
@@ -8498,7 +8485,9 @@
     1,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 230,
@@ -8561,24 +8550,24 @@
    "id": 233,
    "ch": 3,
    "text": "Negative contact due IMC.",
-   "spoken": "negative contact due india mike charlie",
-   "tts": "negative contact due india mike charlie.",
+   "spoken": "negative contact due i m c",
+   "tts": "negative contact due i m c.",
    "gaps": [],
    "words": [
     "negative",
     "contact",
     "due",
-    "india",
-    "mike",
-    "charlie"
+    "i",
+    "m",
+    "c"
    ],
    "syl": [
     4,
     2,
     1,
-    2,
-    2,
-    2
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -9784,12 +9773,12 @@
    "id": 276,
    "ch": 3,
    "text": "Maintain 3000 feet until glide path interception.",
-   "spoken": "maintain three thousand feet until glide path interception",
-   "tts": "maintain three thousand feet until glide path interception.",
+   "spoken": "maintain tree thousand feet until glide path interception",
+   "tts": "maintain tree thousand feet until glide path interception.",
    "gaps": [],
    "words": [
     "maintain",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "until",
@@ -9807,7 +9796,9 @@
     1,
     4
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 277,
@@ -10588,8 +10579,8 @@
    "id": 300,
    "ch": 4,
    "text": "Cleared straight-in ILS approach Runway 24, descend to 3000 feet, QNH1011.",
-   "spoken": "cleared straight-in i l s approach runway two four descend to three thousand feet q n h one zero one one",
-   "tts": "cleared straight-in i l s approach runway two four, descend to three thousand feet, q n h one zero one one.",
+   "spoken": "cleared straight-in i l s approach runway two four descend to tree thousand feet q n h one zero one one",
+   "tts": "cleared straight-in i l s approach runway two four, descend to tree thousand feet, q n h one zero one one.",
    "gaps": [
     {
      "at": 9,
@@ -10612,7 +10603,7 @@
     "four",
     "descend",
     "to",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "q",
@@ -10647,7 +10638,8 @@
     2
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -10766,8 +10758,8 @@
    "id": 305,
    "ch": 4,
    "text": "Cleared VOR-DME approach Runway 24, descending to 3000 feet QNH1007.",
-   "spoken": "cleared v o r d m e approach runway two four descending to three thousand feet q n h one zero zero seven",
-   "tts": "cleared v o r d m e approach runway two four, descending to three thousand feet q n h one zero zero seven.",
+   "spoken": "cleared v o r d m e approach runway two four descending to tree thousand feet q n h one zero zero seven",
+   "tts": "cleared v o r d m e approach runway two four, descending to tree thousand feet q n h one zero zero seven.",
    "gaps": [
     {
      "at": 11,
@@ -10788,7 +10780,7 @@
     "four",
     "descending",
     "to",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "q",
@@ -10825,7 +10817,8 @@
     2
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -11346,8 +11339,8 @@
    "id": 318,
    "ch": 4,
    "text": "OverheadYV, maintaining 3000 feet, entering hold.",
-   "spoken": "overhead yankee victor maintaining three thousand feet entering hold",
-   "tts": "overhead yankee victor, maintaining three thousand feet, entering hold.",
+   "spoken": "overhead yankee victor maintaining tree thousand feet entering hold",
+   "tts": "overhead yankee victor, maintaining tree thousand feet, entering hold.",
    "gaps": [
     {
      "at": 3,
@@ -11363,7 +11356,7 @@
     "yankee",
     "victor",
     "maintaining",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "entering",
@@ -11381,7 +11374,8 @@
     1
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -11664,11 +11658,11 @@
    "id": 325,
    "ch": 4,
    "text": "Three sixty turn left for delay.",
-   "spoken": "three sixty turn left for delay",
-   "tts": "three sixty turn left for delay.",
+   "spoken": "tree sixty turn left for delay",
+   "tts": "tree sixty turn left for delay.",
    "gaps": [],
    "words": [
-    "three",
+    "tree",
     "sixty",
     "turn",
     "left",
@@ -11683,7 +11677,9 @@
     1,
     2
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 326,
@@ -11890,17 +11886,13 @@
    "id": 330,
    "ch": 4,
    "text": "Cleared to JEMMYvia BK 1AArrival.",
-   "spoken": "cleared to juliett echo mike mike yankee via bravo kilo one alfa arrival",
-   "tts": "cleared to juliett echo mike mike yankee via bravo kilo one alfa arrival.",
+   "spoken": "cleared to jemmy via bravo kilo one alfa arrival",
+   "tts": "cleared to jemmy via bravo kilo one alfa arrival.",
    "gaps": [],
    "words": [
     "cleared",
     "to",
-    "juliett",
-    "echo",
-    "mike",
-    "mike",
-    "yankee",
+    "jemmy",
     "via",
     "bravo",
     "kilo",
@@ -11911,10 +11903,6 @@
    "syl": [
     2,
     1,
-    2,
-    2,
-    2,
-    2,
     2,
     1,
     2,
@@ -12171,8 +12159,8 @@
    "id": 337,
    "ch": 4,
    "text": "Maintain own separation and VMC, descend to FL50.",
-   "spoken": "maintain own separation and victor mike charlie descend to flight level five zero",
-   "tts": "maintain own separation and victor mike charlie, descend to flight level five zero.",
+   "spoken": "maintain own separation and v m c descend to flight level five zero",
+   "tts": "maintain own separation and v m c, descend to flight level five zero.",
    "gaps": [
     {
      "at": 7,
@@ -12184,9 +12172,9 @@
     "own",
     "separation",
     "and",
-    "victor",
-    "mike",
-    "charlie",
+    "v",
+    "m",
+    "c",
     "descend",
     "to",
     "flight",
@@ -12199,9 +12187,9 @@
     1,
     4,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     1,
@@ -12309,8 +12297,8 @@
    "id": 341,
    "ch": 4,
    "text": "Passing altitude 2300 feet, climbing to FL80.",
-   "spoken": "passing altitude two thousand three hundred feet climbing to flight level eight zero",
-   "tts": "passing altitude two thousand three hundred feet, climbing to flight level eight zero.",
+   "spoken": "passing altitude two thousand tree hundred feet climbing to flight level eight zero",
+   "tts": "passing altitude two thousand tree hundred feet, climbing to flight level eight zero.",
    "gaps": [
     {
      "at": 7,
@@ -12322,7 +12310,7 @@
     "altitude",
     "two",
     "thousand",
-    "three",
+    "tree",
     "hundred",
     "feet",
     "climbing",
@@ -12347,7 +12335,9 @@
     1,
     2
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 342,
@@ -13073,8 +13063,8 @@
    "id": 362,
    "ch": 4,
    "text": "RNAV approach not available due FMS database. Request VOR approach.",
-   "spoken": "ar nav approach not available due foxtrot mike sierra database request v o r approach",
-   "tts": "ar nav approach not available due foxtrot mike sierra database. request v o r approach.",
+   "spoken": "ar nav approach not available due f m s database request v o r approach",
+   "tts": "ar nav approach not available due f m s database. request v o r approach.",
    "gaps": [
     {
      "at": 10,
@@ -13088,9 +13078,9 @@
     "not",
     "available",
     "due",
-    "foxtrot",
-    "mike",
-    "sierra",
+    "f",
+    "m",
+    "s",
     "database",
     "request",
     "v",
@@ -13105,9 +13095,9 @@
     1,
     4,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     4,
     2,
     1,
@@ -13224,8 +13214,8 @@
    "id": 366,
    "ch": 4,
    "text": "GPS primary lost, going around.",
-   "spoken": "golf papa sierra primary lost going around",
-   "tts": "golf papa sierra primary lost, going around.",
+   "spoken": "g p s primary lost going around",
+   "tts": "g p s primary lost, going around.",
    "gaps": [
     {
      "at": 5,
@@ -13233,9 +13223,9 @@
     }
    ],
    "words": [
-    "golf",
-    "papa",
-    "sierra",
+    "g",
+    "p",
+    "s",
     "primary",
     "lost",
     "going",
@@ -13243,8 +13233,8 @@
    ],
    "syl": [
     1,
-    2,
-    2,
+    1,
+    1,
     3,
     1,
     1,
@@ -15474,14 +15464,14 @@
    "id": 417,
    "ch": 5,
    "text": "Request VMC descent to FL60.",
-   "spoken": "request victor mike charlie descent to flight level six zero",
-   "tts": "request victor mike charlie descent to flight level six zero.",
+   "spoken": "request v m c descent to flight level six zero",
+   "tts": "request v m c descent to flight level six zero.",
    "gaps": [],
    "words": [
     "request",
-    "victor",
-    "mike",
-    "charlie",
+    "v",
+    "m",
+    "c",
     "descent",
     "to",
     "flight",
@@ -15491,9 +15481,9 @@
    ],
    "syl": [
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     1,
@@ -15509,8 +15499,8 @@
    "id": 418,
    "ch": 5,
    "text": "Descending to FL60, maintain VMC FL90 to FL70, report traffic in sight at FL80.",
-   "spoken": "descending to flight level six zero maintain victor mike charlie flight level niner zero to flight level seven zero report traffic in sight at flight level eight zero",
-   "tts": "descending to flight level six zero, maintain victor mike charlie flight level niner zero to flight level seven zero, report traffic in sight at flight level eight zero.",
+   "spoken": "descending to flight level six zero maintain v m c flight level niner zero to flight level seven zero report traffic in sight at flight level eight zero",
+   "tts": "descending to flight level six zero, maintain v m c flight level niner zero to flight level seven zero, report traffic in sight at flight level eight zero.",
    "gaps": [
     {
      "at": 6,
@@ -15529,9 +15519,9 @@
     "six",
     "zero",
     "maintain",
-    "victor",
-    "mike",
-    "charlie",
+    "v",
+    "m",
+    "c",
     "flight",
     "level",
     "niner",
@@ -15559,9 +15549,9 @@
     1,
     2,
     2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     1,
     2,
     2,
@@ -16050,22 +16040,22 @@
    "id": 429,
    "ch": 5,
    "text": "Affirm RVSM.",
-   "spoken": "affirm romeo victor sierra mike",
-   "tts": "affirm romeo victor sierra mike.",
+   "spoken": "affirm r v s m",
+   "tts": "affirm r v s m.",
    "gaps": [],
    "words": [
     "affirm",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike"
+    "r",
+    "v",
+    "s",
+    "m"
    ],
    "syl": [
     2,
-    2,
-    2,
-    2,
-    2
+    1,
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -16075,25 +16065,25 @@
    "id": 430,
    "ch": 5,
    "text": "Negative RVSM due equipment downgraded.",
-   "spoken": "negative romeo victor sierra mike due equipment downgraded",
-   "tts": "negative romeo victor sierra mike due equipment downgraded.",
+   "spoken": "negative r v s m due equipment downgraded",
+   "tts": "negative r v s m due equipment downgraded.",
    "gaps": [],
    "words": [
     "negative",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "due",
     "equipment",
     "downgraded"
    ],
    "syl": [
     4,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     1,
     3,
     3
@@ -16106,27 +16096,27 @@
    "id": 431,
    "ch": 5,
    "text": "Request clearance into RVSM airspace.",
-   "spoken": "request clearance into romeo victor sierra mike airspace",
-   "tts": "request clearance into romeo victor sierra mike airspace.",
+   "spoken": "request clearance into r v s m airspace",
+   "tts": "request clearance into r v s m airspace.",
    "gaps": [],
    "words": [
     "request",
     "clearance",
     "into",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "airspace"
    ],
    "syl": [
     2,
     3,
     2,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     3
    ],
    "hints": [
@@ -16137,24 +16127,24 @@
    "id": 432,
    "ch": 5,
    "text": "Unable RVSM due turbulence.",
-   "spoken": "unable romeo victor sierra mike due turbulence",
-   "tts": "unable romeo victor sierra mike due turbulence.",
+   "spoken": "unable r v s m due turbulence",
+   "tts": "unable r v s m due turbulence.",
    "gaps": [],
    "words": [
     "unable",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "due",
     "turbulence"
    ],
    "syl": [
     3,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     1,
     4
    ],
@@ -16166,26 +16156,26 @@
    "id": 433,
    "ch": 5,
    "text": "Ready to resume RVSM.",
-   "spoken": "ready to resume romeo victor sierra mike",
-   "tts": "ready to resume romeo victor sierra mike.",
+   "spoken": "ready to resume r v s m",
+   "tts": "ready to resume r v s m.",
    "gaps": [],
    "words": [
     "ready",
     "to",
     "resume",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike"
+    "r",
+    "v",
+    "s",
+    "m"
    ],
    "syl": [
     2,
     1,
     3,
-    2,
-    2,
-    2,
-    2
+    1,
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -16653,8 +16643,8 @@
    "id": 443,
    "ch": 6,
    "text": "All our air conditioning packs have malfunctioned. Request rapid descent to MEA.",
-   "spoken": "all our air conditioning packs have malfunctioned request rapid descent to mike echo alfa",
-   "tts": "all our air conditioning packs have malfunctioned. request rapid descent to mike echo alfa.",
+   "spoken": "all our air conditioning packs have malfunctioned request rapid descent to m e a",
+   "tts": "all our air conditioning packs have malfunctioned. request rapid descent to m e a.",
    "gaps": [
     {
      "at": 7,
@@ -16673,9 +16663,9 @@
     "rapid",
     "descent",
     "to",
-    "mike",
-    "echo",
-    "alfa"
+    "m",
+    "e",
+    "a"
    ],
    "syl": [
     1,
@@ -16689,9 +16679,9 @@
     2,
     2,
     1,
-    2,
-    2,
-    2
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -17497,8 +17487,8 @@
    "id": 463,
    "ch": 6,
    "text": "Our FMS has malfunctioned. Request radar vectors.",
-   "spoken": "our foxtrot mike sierra has malfunctioned request radar vectors",
-   "tts": "our foxtrot mike sierra has malfunctioned. request radar vectors.",
+   "spoken": "our f m s has malfunctioned request radar vectors",
+   "tts": "our f m s has malfunctioned. request radar vectors.",
    "gaps": [
     {
      "at": 6,
@@ -17507,9 +17497,9 @@
    ],
    "words": [
     "our",
-    "foxtrot",
-    "mike",
-    "sierra",
+    "f",
+    "m",
+    "s",
     "has",
     "malfunctioned",
     "request",
@@ -17518,9 +17508,9 @@
    ],
    "syl": [
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     1,
     4,
     2,
@@ -17558,8 +17548,8 @@
    "id": 465,
    "ch": 6,
    "text": "Unable to maintain altitude, request leaving RVSM airspace.",
-   "spoken": "unable to maintain altitude request leaving romeo victor sierra mike airspace",
-   "tts": "unable to maintain altitude, request leaving romeo victor sierra mike airspace.",
+   "spoken": "unable to maintain altitude request leaving r v s m airspace",
+   "tts": "unable to maintain altitude, request leaving r v s m airspace.",
    "gaps": [
     {
      "at": 4,
@@ -17573,10 +17563,10 @@
     "altitude",
     "request",
     "leaving",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "airspace"
    ],
    "syl": [
@@ -17586,10 +17576,10 @@
     4,
     2,
     2,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     3
    ],
    "hints": [
@@ -17600,16 +17590,16 @@
    "id": 466,
    "ch": 6,
    "text": "We cannot make RNPapproach due equipment.",
-   "spoken": "we cannot make romeo november papa approach due equipment",
-   "tts": "we cannot make romeo november papa approach due equipment.",
+   "spoken": "we cannot make r n p approach due equipment",
+   "tts": "we cannot make r n p approach due equipment.",
    "gaps": [],
    "words": [
     "we",
     "cannot",
     "make",
-    "romeo",
-    "november",
-    "papa",
+    "r",
+    "n",
+    "p",
     "approach",
     "due",
     "equipment"
@@ -17618,9 +17608,9 @@
     1,
     2,
     2,
-    2,
-    3,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     3
@@ -18372,17 +18362,17 @@
    "id": 482,
    "ch": 6,
    "text": "We do not meet GPS approach requirement due to flight crew qualifications.",
-   "spoken": "we do not meet golf papa sierra approach requirement due to flight crew qualifications",
-   "tts": "we do not meet golf papa sierra approach requirement due to flight crew qualifications.",
+   "spoken": "we do not meet g p s approach requirement due to flight crew qualifications",
+   "tts": "we do not meet g p s approach requirement due to flight crew qualifications.",
    "gaps": [],
    "words": [
     "we",
     "do",
     "not",
     "meet",
-    "golf",
-    "papa",
-    "sierra",
+    "g",
+    "p",
+    "s",
     "approach",
     "requirement",
     "due",
@@ -18397,8 +18387,8 @@
     1,
     1,
     1,
-    2,
-    2,
+    1,
+    1,
     2,
     4,
     1,
@@ -18415,8 +18405,8 @@
    "id": 483,
    "ch": 6,
    "text": "Our Airline policy does not allow us to perform CAT IIIC approach.",
-   "spoken": "our airline policy does not allow us to perform charlie alfa tango india india india charlie approach",
-   "tts": "our airline policy does not allow us to perform charlie alfa tango india india india charlie approach.",
+   "spoken": "our airline policy does not allow us to perform category tree charlie approach",
+   "tts": "our airline policy does not allow us to perform category tree charlie approach.",
    "gaps": [],
    "words": [
     "our",
@@ -18428,12 +18418,8 @@
     "us",
     "to",
     "perform",
-    "charlie",
-    "alfa",
-    "tango",
-    "india",
-    "india",
-    "india",
+    "category",
+    "tree",
     "charlie",
     "approach"
    ],
@@ -18447,17 +18433,14 @@
     1,
     1,
     2,
-    2,
-    2,
-    2,
-    2,
-    2,
-    2,
+    4,
+    1,
     2,
     2
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -18555,11 +18538,11 @@
    "id": 487,
    "ch": 6,
    "text": "We are not qualified for CAT IIIB approach and auto-land. Request diversion.",
-   "spoken": "we are not qualified for charlie alfa tango india india india bravo approach and auto-land request diversion",
-   "tts": "we are not qualified for charlie alfa tango india india india bravo approach and auto-land. request diversion.",
+   "spoken": "we are not qualified for category tree bravo approach and auto-land request diversion",
+   "tts": "we are not qualified for category tree bravo approach and auto-land. request diversion.",
    "gaps": [
     {
-     "at": 15,
+     "at": 11,
      "dur": 0.42
     }
    ],
@@ -18569,12 +18552,8 @@
     "not",
     "qualified",
     "for",
-    "charlie",
-    "alfa",
-    "tango",
-    "india",
-    "india",
-    "india",
+    "category",
+    "tree",
     "bravo",
     "approach",
     "and",
@@ -18588,12 +18567,8 @@
     1,
     3,
     1,
-    2,
-    2,
-    2,
-    2,
-    2,
-    2,
+    4,
+    1,
     2,
     2,
     1,
@@ -18602,7 +18577,8 @@
     3
    ],
    "hints": [
-    "alpha"
+    "alpha",
+    "tree"
    ]
   },
   {
@@ -19157,8 +19133,8 @@
    "id": 501,
    "ch": 6,
    "text": "Request diversion to the nearest suitable airport due AC BUS failure.",
-   "spoken": "request diversion to the nearest suitable airport due alfa charlie bravo uniform sierra failure",
-   "tts": "request diversion to the nearest suitable airport due alfa charlie bravo uniform sierra failure.",
+   "spoken": "request diversion to the nearest suitable airport due a c bus failure",
+   "tts": "request diversion to the nearest suitable airport due a c bus failure.",
    "gaps": [],
    "words": [
     "request",
@@ -19169,11 +19145,9 @@
     "suitable",
     "airport",
     "due",
-    "alfa",
-    "charlie",
-    "bravo",
-    "uniform",
-    "sierra",
+    "a",
+    "c",
+    "bus",
     "failure"
    ],
    "syl": [
@@ -19185,11 +19159,9 @@
     3,
     2,
     1,
-    2,
-    2,
-    2,
-    3,
-    2,
+    1,
+    1,
+    1,
     3
    ],
    "hints": [
@@ -19200,11 +19172,11 @@
    "id": 502,
    "ch": 6,
    "text": "We are not supplying power to our DC BUS. Request priority landing.",
-   "spoken": "we are not supplying power to our delta charlie bravo uniform sierra request priority landing",
-   "tts": "we are not supplying power to our delta charlie bravo uniform sierra. request priority landing.",
+   "spoken": "we are not supplying power to our delta charlie bus request priority landing",
+   "tts": "we are not supplying power to our delta charlie bus. request priority landing.",
    "gaps": [
     {
-     "at": 12,
+     "at": 10,
      "dur": 0.42
     }
    ],
@@ -19218,9 +19190,7 @@
     "our",
     "delta",
     "charlie",
-    "bravo",
-    "uniform",
-    "sierra",
+    "bus",
     "request",
     "priority",
     "landing"
@@ -19235,9 +19205,7 @@
     1,
     2,
     2,
-    2,
-    3,
-    2,
+    1,
     2,
     3,
     2
@@ -20129,8 +20097,8 @@
    "id": 520,
    "ch": 6,
    "text": "We have an APU fire warning. Can you verify if there is smoke coming from the back of the plane?",
-   "spoken": "we have an alfa papa uniform fire warning can you verify if there is smoke coming from the back of the plane",
-   "tts": "we have an alfa papa uniform fire warning. can you verify if there is smoke coming from the back of the plane?",
+   "spoken": "we have an a p u fire warning can you verify if there is smoke coming from the back of the plane",
+   "tts": "we have an a p u fire warning. can you verify if there is smoke coming from the back of the plane?",
    "gaps": [
     {
      "at": 8,
@@ -20141,9 +20109,9 @@
     "we",
     "have",
     "an",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "fire",
     "warning",
     "can",
@@ -20165,9 +20133,9 @@
     1,
     2,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     2,
     2,
     1,
@@ -20193,8 +20161,8 @@
    "id": 521,
    "ch": 6,
    "text": "The APU fire seems to be extinguished. Request fire trucks on standby and stairs vehicle to disembark the passengers.",
-   "spoken": "the alfa papa uniform fire seems to be extinguished request fire trucks on standby and stairs vehicle to disembark the passengers",
-   "tts": "the alfa papa uniform fire seems to be extinguished. request fire trucks on standby and stairs vehicle to disembark the passengers.",
+   "spoken": "the a p u fire seems to be extinguished request fire trucks on standby and stairs vehicle to disembark the passengers",
+   "tts": "the a p u fire seems to be extinguished. request fire trucks on standby and stairs vehicle to disembark the passengers.",
    "gaps": [
     {
      "at": 9,
@@ -20203,9 +20171,9 @@
    ],
    "words": [
     "the",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "fire",
     "seems",
     "to",
@@ -20226,9 +20194,9 @@
    ],
    "syl": [
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     2,
     1,
     1,
@@ -20255,8 +20223,8 @@
    "id": 522,
    "ch": 6,
    "text": "The APU is still on fire. We are evacuating. Request emergency services.",
-   "spoken": "the alfa papa uniform is still on fire we are evacuating request emergency services",
-   "tts": "the alfa papa uniform is still on fire. we are evacuating. request emergency services.",
+   "spoken": "the a p u is still on fire we are evacuating request emergency services",
+   "tts": "the a p u is still on fire. we are evacuating. request emergency services.",
    "gaps": [
     {
      "at": 8,
@@ -20269,9 +20237,9 @@
    ],
    "words": [
     "the",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "is",
     "still",
     "on",
@@ -20285,9 +20253,9 @@
    ],
    "syl": [
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     1,
     1,
     1,
@@ -20693,8 +20661,8 @@
    "id": 531,
    "ch": 6,
    "text": "Our flight control computers are not functioning well. We are having difficulty maintaining level flight, unable RVSM.",
-   "spoken": "our flight control computers are not functioning well we are having difficulty maintaining level flight unable romeo victor sierra mike",
-   "tts": "our flight control computers are not functioning well. we are having difficulty maintaining level flight, unable romeo victor sierra mike.",
+   "spoken": "our flight control computers are not functioning well we are having difficulty maintaining level flight unable r v s m",
+   "tts": "our flight control computers are not functioning well. we are having difficulty maintaining level flight, unable r v s m.",
    "gaps": [
     {
      "at": 8,
@@ -20722,10 +20690,10 @@
     "level",
     "flight",
     "unable",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike"
+    "r",
+    "v",
+    "s",
+    "m"
    ],
    "syl": [
     1,
@@ -20744,10 +20712,10 @@
     2,
     1,
     3,
-    2,
-    2,
-    2,
-    2
+    1,
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -21749,8 +21717,8 @@
    "id": 551,
    "ch": 6,
    "text": "The ground crew reports that we are leaking a significant amount of fuel from the bottom of Number Three engine. We have just shut it down.",
-   "spoken": "the ground crew reports that we are leaking a significant amount of fuel from the bottom of number three engine we have just shut it down",
-   "tts": "the ground crew reports that we are leaking a significant amount of fuel from the bottom of number three engine. we have just shut it down.",
+   "spoken": "the ground crew reports that we are leaking a significant amount of fuel from the bottom of number tree engine we have just shut it down",
+   "tts": "the ground crew reports that we are leaking a significant amount of fuel from the bottom of number tree engine. we have just shut it down.",
    "gaps": [
     {
      "at": 20,
@@ -21776,7 +21744,7 @@
     "bottom",
     "of",
     "number",
-    "three",
+    "tree",
     "engine",
     "we",
     "have",
@@ -21813,7 +21781,9 @@
     1,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 552,
@@ -23436,8 +23406,8 @@
    "id": 586,
    "ch": 6,
    "text": "Two of our display units have failed. We are no longer RNP qualified. Request diversion.",
-   "spoken": "two of our display units have failed we are no longer romeo november papa qualified request diversion",
-   "tts": "two of our display units have failed. we are no longer romeo november papa qualified. request diversion.",
+   "spoken": "two of our display units have failed we are no longer r n p qualified request diversion",
+   "tts": "two of our display units have failed. we are no longer r n p qualified. request diversion.",
    "gaps": [
     {
      "at": 7,
@@ -23460,9 +23430,9 @@
     "are",
     "no",
     "longer",
-    "romeo",
-    "november",
-    "papa",
+    "r",
+    "n",
+    "p",
     "qualified",
     "request",
     "diversion"
@@ -23479,9 +23449,9 @@
     2,
     1,
     2,
-    2,
-    3,
-    2,
+    1,
+    1,
+    1,
     3,
     2,
     3
@@ -23527,8 +23497,8 @@
    "id": 588,
    "ch": 6,
    "text": "We made the go around due to FMS position error.",
-   "spoken": "we made the go around due to foxtrot mike sierra position error",
-   "tts": "we made the go around due to foxtrot mike sierra position error.",
+   "spoken": "we made the go around due to f m s position error",
+   "tts": "we made the go around due to f m s position error.",
    "gaps": [],
    "words": [
     "we",
@@ -23538,9 +23508,9 @@
     "around",
     "due",
     "to",
-    "foxtrot",
-    "mike",
-    "sierra",
+    "f",
+    "m",
+    "s",
     "position",
     "error"
    ],
@@ -23552,9 +23522,9 @@
     2,
     1,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     3,
     2
    ],
@@ -23605,8 +23575,8 @@
    "id": 590,
    "ch": 6,
    "text": "We made the go around due to GPS error.",
-   "spoken": "we made the go around due to golf papa sierra error",
-   "tts": "we made the go around due to golf papa sierra error.",
+   "spoken": "we made the go around due to g p s error",
+   "tts": "we made the go around due to g p s error.",
    "gaps": [],
    "words": [
     "we",
@@ -23616,9 +23586,9 @@
     "around",
     "due",
     "to",
-    "golf",
-    "papa",
-    "sierra",
+    "g",
+    "p",
+    "s",
     "error"
    ],
    "syl": [
@@ -23630,8 +23600,8 @@
     1,
     1,
     1,
-    2,
-    2,
+    1,
+    1,
     2
    ],
    "hints": [
@@ -23675,8 +23645,8 @@
    "id": 592,
    "ch": 6,
    "text": "We made the go around due to CDU failure.",
-   "spoken": "we made the go around due to charlie delta uniform failure",
-   "tts": "we made the go around due to charlie delta uniform failure.",
+   "spoken": "we made the go around due to c d u failure",
+   "tts": "we made the go around due to c d u failure.",
    "gaps": [],
    "words": [
     "we",
@@ -23686,9 +23656,9 @@
     "around",
     "due",
     "to",
-    "charlie",
-    "delta",
-    "uniform",
+    "c",
+    "d",
+    "u",
     "failure"
    ],
    "syl": [
@@ -23699,9 +23669,9 @@
     2,
     1,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     3
    ],
    "hints": [
@@ -23749,8 +23719,8 @@
    "id": 594,
    "ch": 6,
    "text": "We no longer have altitude warning. Request leaving RVSM airspace.",
-   "spoken": "we no longer have altitude warning request leaving romeo victor sierra mike airspace",
-   "tts": "we no longer have altitude warning. request leaving romeo victor sierra mike airspace.",
+   "spoken": "we no longer have altitude warning request leaving r v s m airspace",
+   "tts": "we no longer have altitude warning. request leaving r v s m airspace.",
    "gaps": [
     {
      "at": 6,
@@ -23766,10 +23736,10 @@
     "warning",
     "request",
     "leaving",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "airspace"
    ],
    "syl": [
@@ -23781,10 +23751,10 @@
     2,
     2,
     2,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     3
    ],
    "hints": [
@@ -23795,8 +23765,8 @@
    "id": 595,
    "ch": 6,
    "text": "We have autopilot disconnection. We are no longer RVSM qualified. Request leaving RVSM airspace.",
-   "spoken": "we have autopilot disconnection we are no longer romeo victor sierra mike qualified request leaving romeo victor sierra mike airspace",
-   "tts": "we have autopilot disconnection. we are no longer romeo victor sierra mike qualified. request leaving romeo victor sierra mike airspace.",
+   "spoken": "we have autopilot disconnection we are no longer r v s m qualified request leaving r v s m airspace",
+   "tts": "we have autopilot disconnection. we are no longer r v s m qualified. request leaving r v s m airspace.",
    "gaps": [
     {
      "at": 4,
@@ -23816,17 +23786,17 @@
     "are",
     "no",
     "longer",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "qualified",
     "request",
     "leaving",
-    "romeo",
-    "victor",
-    "sierra",
-    "mike",
+    "r",
+    "v",
+    "s",
+    "m",
     "airspace"
    ],
    "syl": [
@@ -23838,17 +23808,17 @@
     2,
     1,
     2,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     3,
     2,
     2,
-    2,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
+    1,
     3
    ],
    "hints": [
@@ -24145,8 +24115,8 @@
    "id": 602,
    "ch": 6,
    "text": "Unable, TCAS RA.",
-   "spoken": "unable t cas romeo alfa",
-   "tts": "unable, t cas romeo alfa.",
+   "spoken": "unable t cas r a",
+   "tts": "unable, t cas r a.",
    "gaps": [
     {
      "at": 1,
@@ -24157,15 +24127,15 @@
     "unable",
     "t",
     "cas",
-    "romeo",
-    "alfa"
+    "r",
+    "a"
    ],
    "syl": [
     3,
     1,
     1,
-    2,
-    2
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -24451,8 +24421,8 @@
    "id": 609,
    "ch": 6,
    "text": "Engine indicates high EGT at idle power setting. We need to have partial thrust in the descent. Request an early descent.",
-   "spoken": "engine indicates high echo golf tango at idle power setting we need to have partial thrust in the descent request an early descent",
-   "tts": "engine indicates high echo golf tango at idle power setting. we need to have partial thrust in the descent. request an early descent.",
+   "spoken": "engine indicates high e g t at idle power setting we need to have partial thrust in the descent request an early descent",
+   "tts": "engine indicates high e g t at idle power setting. we need to have partial thrust in the descent. request an early descent.",
    "gaps": [
     {
      "at": 10,
@@ -24467,9 +24437,9 @@
     "engine",
     "indicates",
     "high",
-    "echo",
-    "golf",
-    "tango",
+    "e",
+    "g",
+    "t",
     "at",
     "idle",
     "power",
@@ -24492,9 +24462,9 @@
     3,
     4,
     1,
-    2,
     1,
-    2,
+    1,
+    1,
     1,
     2,
     2,
@@ -25415,8 +25385,8 @@
    "id": 630,
    "ch": 6,
    "text": "Our inertial reference system has failed, unable GPS approach. Request ILS or VOR approach.",
-   "spoken": "our inertial reference system has failed unable golf papa sierra approach request i l s or v o r approach",
-   "tts": "our inertial reference system has failed, unable golf papa sierra approach. request i l s or v o r approach.",
+   "spoken": "our inertial reference system has failed unable g p s approach request i l s or v o r approach",
+   "tts": "our inertial reference system has failed, unable g p s approach. request i l s or v o r approach.",
    "gaps": [
     {
      "at": 6,
@@ -25435,9 +25405,9 @@
     "has",
     "failed",
     "unable",
-    "golf",
-    "papa",
-    "sierra",
+    "g",
+    "p",
+    "s",
     "approach",
     "request",
     "i",
@@ -25458,8 +25428,8 @@
     2,
     3,
     1,
-    2,
-    2,
+    1,
+    1,
     2,
     2,
     1,
@@ -25479,8 +25449,8 @@
    "id": 631,
    "ch": 6,
    "text": "We made the go around because the GPWS warning was triggered.",
-   "spoken": "we made the go around because the golf papa whiskey sierra warning was triggered",
-   "tts": "we made the go around because the golf papa whiskey sierra warning was triggered.",
+   "spoken": "we made the go around because the g p w s warning was triggered",
+   "tts": "we made the go around because the g p w s warning was triggered.",
    "gaps": [],
    "words": [
     "we",
@@ -25490,10 +25460,10 @@
     "around",
     "because",
     "the",
-    "golf",
-    "papa",
-    "whiskey",
-    "sierra",
+    "g",
+    "p",
+    "w",
+    "s",
     "warning",
     "was",
     "triggered"
@@ -25507,9 +25477,9 @@
     3,
     1,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     1,
     3
@@ -25666,8 +25636,8 @@
    "id": 635,
    "ch": 6,
    "text": "GPS unreliable, terminatingADS-B transmissions.",
-   "spoken": "golf papa sierra unreliable terminating a d s b transmissions",
-   "tts": "golf papa sierra unreliable, terminating a d s b transmissions.",
+   "spoken": "g p s unreliable terminating a d s b transmissions",
+   "tts": "g p s unreliable, terminating a d s b transmissions.",
    "gaps": [
     {
      "at": 4,
@@ -25675,9 +25645,9 @@
     }
    ],
    "words": [
-    "golf",
-    "papa",
-    "sierra",
+    "g",
+    "p",
+    "s",
     "unreliable",
     "terminating",
     "a",
@@ -25688,8 +25658,8 @@
    ],
    "syl": [
     1,
-    2,
-    2,
+    1,
+    1,
     4,
     4,
     1,
@@ -25974,8 +25944,8 @@
    "id": 642,
    "ch": 6,
    "text": "Our weather radar has failed and we are in IMC. Request return for landing.",
-   "spoken": "our weather radar has failed and we are in india mike charlie request return for landing",
-   "tts": "our weather radar has failed and we are in india mike charlie. request return for landing.",
+   "spoken": "our weather radar has failed and we are in i m c request return for landing",
+   "tts": "our weather radar has failed and we are in i m c. request return for landing.",
    "gaps": [
     {
      "at": 12,
@@ -25992,9 +25962,9 @@
     "we",
     "are",
     "in",
-    "india",
-    "mike",
-    "charlie",
+    "i",
+    "m",
+    "c",
     "request",
     "return",
     "for",
@@ -26010,9 +25980,9 @@
     1,
     2,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     2,
     2,
     1,
@@ -26166,8 +26136,8 @@
    "id": 646,
    "ch": 6,
    "text": "We do not have that runway in our database. Request delay our descent while we program the CDU.",
-   "spoken": "we do not have that runway in our database request delay our descent while we program the charlie delta uniform",
-   "tts": "we do not have that runway in our database. request delay our descent while we program the charlie delta uniform.",
+   "spoken": "we do not have that runway in our database request delay our descent while we program the c d u",
+   "tts": "we do not have that runway in our database. request delay our descent while we program the c d u.",
    "gaps": [
     {
      "at": 9,
@@ -26192,9 +26162,9 @@
     "we",
     "program",
     "the",
-    "charlie",
-    "delta",
-    "uniform"
+    "c",
+    "d",
+    "u"
    ],
    "syl": [
     1,
@@ -26214,9 +26184,9 @@
     1,
     2,
     1,
-    2,
-    2,
-    3
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -26765,8 +26735,8 @@
    "id": 656,
    "ch": 6,
    "text": "Our APU bleed air malfunctioned during engine startup. We are calling the ground staff, standby.",
-   "spoken": "our alfa papa uniform bleed air malfunctioned during engine startup we are calling the ground staff standby",
-   "tts": "our alfa papa uniform bleed air malfunctioned during engine startup. we are calling the ground staff, standby.",
+   "spoken": "our a p u bleed air malfunctioned during engine startup we are calling the ground staff standby",
+   "tts": "our a p u bleed air malfunctioned during engine startup. we are calling the ground staff, standby.",
    "gaps": [
     {
      "at": 10,
@@ -26779,9 +26749,9 @@
    ],
    "words": [
     "our",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "bleed",
     "air",
     "malfunctioned",
@@ -26798,9 +26768,9 @@
    ],
    "syl": [
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     1,
     1,
     4,
@@ -26921,8 +26891,8 @@
    "id": 659,
    "ch": 6,
    "text": "Both engine bleed air systems have failed and we are relying on APU bleed for air conditioning. Request descent to 14, 000 feet.",
-   "spoken": "both engine bleed air systems have failed and we are relying on alfa papa uniform bleed for air conditioning request descent to one four zero feet",
-   "tts": "both engine bleed air systems have failed and we are relying on alfa papa uniform bleed for air conditioning. request descent to one four, zero feet.",
+   "spoken": "both engine bleed air systems have failed and we are relying on a p u bleed for air conditioning request descent to one four zero feet",
+   "tts": "both engine bleed air systems have failed and we are relying on a p u bleed for air conditioning. request descent to one four, zero feet.",
    "gaps": [
     {
      "at": 19,
@@ -26946,9 +26916,9 @@
     "are",
     "relying",
     "on",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "bleed",
     "for",
     "air",
@@ -26974,9 +26944,9 @@
     2,
     2,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     1,
     1,
     1,
@@ -26997,8 +26967,8 @@
    "id": 660,
    "ch": 6,
    "text": "We have no bleed air coming from either engines or APU. Request rapid descent to 10,000 feet.",
-   "spoken": "we have no bleed air coming from either engines or alfa papa uniform request rapid descent to one zero zero feet",
-   "tts": "we have no bleed air coming from either engines or alfa papa uniform. request rapid descent to one zero, zero feet.",
+   "spoken": "we have no bleed air coming from either engines or a p u request rapid descent to one zero zero feet",
+   "tts": "we have no bleed air coming from either engines or a p u. request rapid descent to one zero, zero feet.",
    "gaps": [
     {
      "at": 13,
@@ -27020,9 +26990,9 @@
     "either",
     "engines",
     "or",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "request",
     "rapid",
     "descent",
@@ -27043,9 +27013,9 @@
     2,
     3,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     2,
     2,
     2,
@@ -27275,8 +27245,8 @@
    "id": 665,
    "ch": 6,
    "text": "We just had an APU fire warning, and discharged the fire extinguisher, Request visual check if there is smoke coming from our tail section.",
-   "spoken": "we just had an alfa papa uniform fire warning and discharged the fire extinguisher request visual check if there is smoke coming from our tail section",
-   "tts": "we just had an alfa papa uniform fire warning, and discharged the fire extinguisher, request visual check if there is smoke coming from our tail section.",
+   "spoken": "we just had an a p u fire warning and discharged the fire extinguisher request visual check if there is smoke coming from our tail section",
+   "tts": "we just had an a p u fire warning, and discharged the fire extinguisher, request visual check if there is smoke coming from our tail section.",
    "gaps": [
     {
      "at": 9,
@@ -27292,9 +27262,9 @@
     "just",
     "had",
     "an",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "fire",
     "warning",
     "and",
@@ -27320,9 +27290,9 @@
     1,
     1,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     2,
     2,
     1,
@@ -27351,8 +27321,8 @@
    "id": 666,
    "ch": 6,
    "text": "Another aircraft has seen a lot of smoke coming from ourAPU. We are evacuating. Request emergency services.",
-   "spoken": "another aircraft has seen a lot of smoke coming from our alfa papa uniform we are evacuating request emergency services",
-   "tts": "another aircraft has seen a lot of smoke coming from our alfa papa uniform. we are evacuating. request emergency services.",
+   "spoken": "another aircraft has seen a lot of smoke coming from our a p u we are evacuating request emergency services",
+   "tts": "another aircraft has seen a lot of smoke coming from our a p u. we are evacuating. request emergency services.",
    "gaps": [
     {
      "at": 14,
@@ -27375,9 +27345,9 @@
     "coming",
     "from",
     "our",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "we",
     "are",
     "evacuating",
@@ -27397,9 +27367,9 @@
     2,
     1,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     1,
     2,
     4,
@@ -27415,8 +27385,8 @@
    "id": 667,
    "ch": 6,
    "text": "We are at bay15. We have anAPU fire. Request fire services.",
-   "spoken": "we are at bay one five we have an alfa papa uniform fire request fire services",
-   "tts": "we are at bay one five. we have an alfa papa uniform fire. request fire services.",
+   "spoken": "we are at bay one five we have an a p u fire request fire services",
+   "tts": "we are at bay one five. we have an a p u fire. request fire services.",
    "gaps": [
     {
      "at": 6,
@@ -27437,9 +27407,9 @@
     "we",
     "have",
     "an",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "fire",
     "request",
     "fire",
@@ -27455,9 +27425,9 @@
     1,
     2,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     2,
     2,
     2,
@@ -27471,8 +27441,8 @@
    "id": 668,
    "ch": 6,
    "text": "We have a generator failure and cannot start our APU at this altitude. Request descent to performAPU startup.",
-   "spoken": "we have a generator failure and cannot start our alfa papa uniform at this altitude request descent to perform alfa papa uniform startup",
-   "tts": "we have a generator failure and cannot start our alfa papa uniform at this altitude. request descent to perform alfa papa uniform startup.",
+   "spoken": "we have a generator failure and cannot start our a p u at this altitude request descent to perform a p u startup",
+   "tts": "we have a generator failure and cannot start our a p u at this altitude. request descent to perform a p u startup.",
    "gaps": [
     {
      "at": 15,
@@ -27489,9 +27459,9 @@
     "cannot",
     "start",
     "our",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "at",
     "this",
     "altitude",
@@ -27499,9 +27469,9 @@
     "descent",
     "to",
     "perform",
-    "alfa",
-    "papa",
-    "uniform",
+    "a",
+    "p",
+    "u",
     "startup"
    ],
    "syl": [
@@ -27514,9 +27484,9 @@
     2,
     1,
     1,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     1,
     1,
     4,
@@ -27524,9 +27494,9 @@
     2,
     1,
     2,
-    2,
-    2,
-    3,
+    1,
+    1,
+    1,
     2
    ],
    "hints": [
@@ -28408,8 +28378,8 @@
    "id": 687,
    "ch": 6,
    "text": "Our EGT continues to be above the maximum limit. Request descent. We might shut down engine Number Two shortly.",
-   "spoken": "our echo golf tango continues to be above the maximum limit request descent we might shut down engine number two shortly",
-   "tts": "our echo golf tango continues to be above the maximum limit. request descent. we might shut down engine number two shortly.",
+   "spoken": "our e g t continues to be above the maximum limit request descent we might shut down engine number two shortly",
+   "tts": "our e g t continues to be above the maximum limit. request descent. we might shut down engine number two shortly.",
    "gaps": [
     {
      "at": 11,
@@ -28422,9 +28392,9 @@
    ],
    "words": [
     "our",
-    "echo",
-    "golf",
-    "tango",
+    "e",
+    "g",
+    "t",
     "continues",
     "to",
     "be",
@@ -28445,9 +28415,9 @@
    ],
    "syl": [
     1,
-    2,
     1,
-    2,
+    1,
+    1,
     3,
     1,
     1,
@@ -28516,8 +28486,8 @@
    "id": 689,
    "ch": 6,
    "text": "The engine vibration is now causing the airplane to shake violently. We are shutting down our engine Number Three.",
-   "spoken": "the engine vibration is now causing the airplane to shake violently we are shutting down our engine number three",
-   "tts": "the engine vibration is now causing the airplane to shake violently. we are shutting down our engine number three.",
+   "spoken": "the engine vibration is now causing the airplane to shake violently we are shutting down our engine number tree",
+   "tts": "the engine vibration is now causing the airplane to shake violently. we are shutting down our engine number tree.",
    "gaps": [
     {
      "at": 11,
@@ -28543,7 +28513,7 @@
     "our",
     "engine",
     "number",
-    "three"
+    "tree"
    ],
    "syl": [
     1,
@@ -28566,7 +28536,9 @@
     2,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 690,
@@ -28626,8 +28598,8 @@
    "id": 691,
    "ch": 6,
    "text": "Engine Number Three has smoke coming out of the pylon section. We are evacuating.",
-   "spoken": "engine number three has smoke coming out of the pylon section we are evacuating",
-   "tts": "engine number three has smoke coming out of the pylon section. we are evacuating.",
+   "spoken": "engine number tree has smoke coming out of the pylon section we are evacuating",
+   "tts": "engine number tree has smoke coming out of the pylon section. we are evacuating.",
    "gaps": [
     {
      "at": 11,
@@ -28637,7 +28609,7 @@
    "words": [
     "engine",
     "number",
-    "three",
+    "tree",
     "has",
     "smoke",
     "coming",
@@ -28666,7 +28638,9 @@
     2,
     4
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 692,
@@ -28854,8 +28828,8 @@
    "id": 695,
    "ch": 6,
    "text": "Our left engine has ingested FOD. We are shutting down engines and holding position.",
-   "spoken": "our left engine has ingested foxtrot oscar delta we are shutting down engines and holding position",
-   "tts": "our left engine has ingested foxtrot oscar delta. we are shutting down engines and holding position.",
+   "spoken": "our left engine has ingested f o d we are shutting down engines and holding position",
+   "tts": "our left engine has ingested f o d. we are shutting down engines and holding position.",
    "gaps": [
     {
      "at": 8,
@@ -28868,9 +28842,9 @@
     "engine",
     "has",
     "ingested",
-    "foxtrot",
-    "oscar",
-    "delta",
+    "f",
+    "o",
+    "d",
     "we",
     "are",
     "shutting",
@@ -28886,9 +28860,9 @@
     3,
     1,
     3,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     1,
     2,
     2,
@@ -30461,8 +30435,8 @@
    "id": 727,
    "ch": 7,
    "text": "There was temperature inversion when we descended through 3000 feet. Our airspeed dropped suddenly by 25 knots.",
-   "spoken": "there was temperature inversion when we descended through three thousand feet our airspeed dropped suddenly by two five knots",
-   "tts": "there was temperature inversion when we descended through three thousand feet. our airspeed dropped suddenly by two five knots.",
+   "spoken": "there was temperature inversion when we descended through tree thousand feet our airspeed dropped suddenly by two five knots",
+   "tts": "there was temperature inversion when we descended through tree thousand feet. our airspeed dropped suddenly by two five knots.",
    "gaps": [
     {
      "at": 11,
@@ -30478,7 +30452,7 @@
     "we",
     "descended",
     "through",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "our",
@@ -30511,7 +30485,9 @@
     2,
     1
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 728,
@@ -30795,8 +30771,8 @@
    "id": 733,
    "ch": 7,
    "text": "Request to continue our flight. Our ETA is in two hours and maybe the airport will have the runways cleared of snow by then.",
-   "spoken": "request to continue our flight our echo tango alfa is in two hours and maybe the airport will have the runways cleared of snow by then",
-   "tts": "request to continue our flight. our echo tango alfa is in two hours and maybe the airport will have the runways cleared of snow by then.",
+   "spoken": "request to continue our flight our e t a is in two hours and maybe the airport will have the runways cleared of snow by then",
+   "tts": "request to continue our flight. our e t a is in two hours and maybe the airport will have the runways cleared of snow by then.",
    "gaps": [
     {
      "at": 5,
@@ -30810,9 +30786,9 @@
     "our",
     "flight",
     "our",
-    "echo",
-    "tango",
-    "alfa",
+    "e",
+    "t",
+    "a",
     "is",
     "in",
     "two",
@@ -30838,9 +30814,9 @@
     1,
     1,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     1,
     1,
     1,
@@ -33253,8 +33229,8 @@
    "id": 778,
    "ch": 7,
    "text": "We have had a tail strike. Request to stop climb at 3000 feet and return for landing.",
-   "spoken": "we have had a tail strike request to stop climb at three thousand feet and return for landing",
-   "tts": "we have had a tail strike. request to stop climb at three thousand feet and return for landing.",
+   "spoken": "we have had a tail strike request to stop climb at tree thousand feet and return for landing",
+   "tts": "we have had a tail strike. request to stop climb at tree thousand feet and return for landing.",
    "gaps": [
     {
      "at": 6,
@@ -33273,7 +33249,7 @@
     "stop",
     "climb",
     "at",
-    "three",
+    "tree",
     "thousand",
     "feet",
     "and",
@@ -33301,7 +33277,9 @@
     1,
     2
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 779,
@@ -34359,8 +34337,8 @@
    "id": 801,
    "ch": 8,
    "text": "We have three serious and five minor injuries on board. Request ambulances on arrival.",
-   "spoken": "we have three serious and five minor injuries on board request ambulances on arrival",
-   "tts": "we have three serious and five minor injuries on board. request ambulances on arrival.",
+   "spoken": "we have tree serious and five minor injuries on board request ambulances on arrival",
+   "tts": "we have tree serious and five minor injuries on board. request ambulances on arrival.",
    "gaps": [
     {
      "at": 10,
@@ -34370,7 +34348,7 @@
    "words": [
     "we",
     "have",
-    "three",
+    "tree",
     "serious",
     "and",
     "five",
@@ -34399,7 +34377,9 @@
     1,
     3
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 802,
@@ -36267,8 +36247,8 @@
    "id": 839,
    "ch": 8,
    "text": "We are unsure of our position due FMS failure. Last known position five miles north of FUPAD, now heading 165 for weather avoidance.",
-   "spoken": "we are unsure of our position due foxtrot mike sierra failure last known position five miles north of foxtrot uniform papa alfa delta now heading one six five for weather avoidance",
-   "tts": "we are unsure of our position due foxtrot mike sierra failure. last known position five miles north of foxtrot uniform papa alfa delta, now heading one six five for weather avoidance.",
+   "spoken": "we are unsure of our position due f m s failure last known position five miles north of foxtrot uniform papa alfa delta now heading one six five for weather avoidance",
+   "tts": "we are unsure of our position due f m s failure. last known position five miles north of foxtrot uniform papa alfa delta, now heading one six five for weather avoidance.",
    "gaps": [
     {
      "at": 11,
@@ -36287,9 +36267,9 @@
     "our",
     "position",
     "due",
-    "foxtrot",
-    "mike",
-    "sierra",
+    "f",
+    "m",
+    "s",
     "failure",
     "last",
     "known",
@@ -36320,9 +36300,9 @@
     1,
     3,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     3,
     1,
     1,
@@ -36353,8 +36333,8 @@
    "id": 840,
    "ch": 8,
    "text": "We have navigation map drift. Request climb to MEA.",
-   "spoken": "we have navigation map drift request climb to mike echo alfa",
-   "tts": "we have navigation map drift. request climb to mike echo alfa.",
+   "spoken": "we have navigation map drift request climb to m e a",
+   "tts": "we have navigation map drift. request climb to m e a.",
    "gaps": [
     {
      "at": 5,
@@ -36370,9 +36350,9 @@
     "request",
     "climb",
     "to",
-    "mike",
-    "echo",
-    "alfa"
+    "m",
+    "e",
+    "a"
    ],
    "syl": [
     1,
@@ -36383,9 +36363,9 @@
     2,
     1,
     1,
-    2,
-    2,
-    2
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -36800,8 +36780,8 @@
    "id": 850,
    "ch": 8,
    "text": "We have traffic indication at 2 o’clock, 300 feet above our level.",
-   "spoken": "we have traffic indication at two o'clock three hundred feet above our level",
-   "tts": "we have traffic indication at two o'clock, three hundred feet above our level.",
+   "spoken": "we have traffic indication at two o'clock tree hundred feet above our level",
+   "tts": "we have traffic indication at two o'clock, tree hundred feet above our level.",
    "gaps": [
     {
      "at": 7,
@@ -36816,7 +36796,7 @@
     "at",
     "two",
     "o'clock",
-    "three",
+    "tree",
     "hundred",
     "feet",
     "above",
@@ -36838,7 +36818,9 @@
     1,
     2
    ],
-   "hints": []
+   "hints": [
+    "tree"
+   ]
   },
   {
    "id": 851,
@@ -36959,8 +36941,8 @@
    "id": 854,
    "ch": 8,
    "text": "Unable to comply, TCAS RA.",
-   "spoken": "unable to comply t cas romeo alfa",
-   "tts": "unable to comply, t cas romeo alfa.",
+   "spoken": "unable to comply t cas r a",
+   "tts": "unable to comply, t cas r a.",
    "gaps": [
     {
      "at": 3,
@@ -36973,8 +36955,8 @@
     "comply",
     "t",
     "cas",
-    "romeo",
-    "alfa"
+    "r",
+    "a"
    ],
    "syl": [
     3,
@@ -36982,8 +36964,8 @@
     2,
     1,
     1,
-    2,
-    2
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -38008,8 +37990,8 @@
    "id": 876,
    "ch": 8,
    "text": "They have revived the unconscious passenger by CPR procedure. It looks like he’ll be fine. Request to cancel the diversion.",
-   "spoken": "they have revived the unconscious passenger by charlie papa romeo procedure it looks like he'll be fine request to cancel the diversion",
-   "tts": "they have revived the unconscious passenger by charlie papa romeo procedure. it looks like he'll be fine. request to cancel the diversion.",
+   "spoken": "they have revived the unconscious passenger by c p r procedure it looks like he'll be fine request to cancel the diversion",
+   "tts": "they have revived the unconscious passenger by c p r procedure. it looks like he'll be fine. request to cancel the diversion.",
    "gaps": [
     {
      "at": 11,
@@ -38028,9 +38010,9 @@
     "unconscious",
     "passenger",
     "by",
-    "charlie",
-    "papa",
-    "romeo",
+    "c",
+    "p",
+    "r",
     "procedure",
     "it",
     "looks",
@@ -38052,9 +38034,9 @@
     3,
     3,
     1,
-    2,
-    2,
-    2,
+    1,
+    1,
+    1,
     4,
     1,
     1,
@@ -38190,8 +38172,8 @@
    "id": 881,
    "ch": 8,
    "text": "Unable, we are in IMC.",
-   "spoken": "unable we are in india mike charlie",
-   "tts": "unable, we are in india mike charlie.",
+   "spoken": "unable we are in i m c",
+   "tts": "unable, we are in i m c.",
    "gaps": [
     {
      "at": 1,
@@ -38203,18 +38185,18 @@
     "we",
     "are",
     "in",
-    "india",
-    "mike",
-    "charlie"
+    "i",
+    "m",
+    "c"
    ],
    "syl": [
     3,
     1,
     2,
     1,
-    2,
-    2,
-    2
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"
@@ -38224,8 +38206,8 @@
    "id": 882,
    "ch": 8,
    "text": "Unable, we are only authorized during daytime VMC.",
-   "spoken": "unable we are only authorized during daytime victor mike charlie",
-   "tts": "unable, we are only authorized during daytime victor mike charlie.",
+   "spoken": "unable we are only authorized during daytime v m c",
+   "tts": "unable, we are only authorized during daytime v m c.",
    "gaps": [
     {
      "at": 1,
@@ -38240,9 +38222,9 @@
     "authorized",
     "during",
     "daytime",
-    "victor",
-    "mike",
-    "charlie"
+    "v",
+    "m",
+    "c"
    ],
    "syl": [
     3,
@@ -38252,9 +38234,9 @@
     4,
     2,
     3,
-    2,
-    2,
-    2
+    1,
+    1,
+    1
    ],
    "hints": [
     "alpha"

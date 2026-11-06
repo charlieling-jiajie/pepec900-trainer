@@ -125,6 +125,10 @@ pepec900-trainer/
 
 **数字**只在读出时特殊：3 → **TREE**、9 → **NINER**、小数点 → **DECIMAL**；其余按常规读法。
 
+**three 一律读 tree**（ICAO 规定）：不仅数字 `3`，文本里出现的英文词 `three`、数词 `three thousand` 也读成 `tree` / `tree thousand`。`CAT IIIB` 读 `category tree bravo`。
+
+**逐条发音对照表**：93 条缩写的权威读法见 [`data/pron.txt`](data/pron.txt)（`tools/build_corpus.py` 的 `PRON` 表）。命中后直接替换，覆盖默认的字母/ICAO 拼读回退。台名保护：`AMS VOR` 这类「台名 + 导航台类型」里的台名强制走 ICAO 拼读，不会被对照表误当术语。
+
 **ICAO 拼读词**（仅在需要逐字确认时使用，如读呼号、拼地名；界面中已不再展示此表）：
 
 | | | | | | | | |
