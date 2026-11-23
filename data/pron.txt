@@ -1,0 +1,96 @@
+# 发音对照表（已校对，2026-11-06）
+# 格式：缩写<TAB>口语展开
+
+ac	a c
+ak	alfa kilo
+ams	a m s
+apu	a p u
+asda	a s d a
+atc	a t c
+au	alfa uniform
+bk	bravo kilo
+bkm	bravo kilo mike
+bus	bus
+cat	cat
+cdu	c d u
+cgo	charlie golf oscar
+ck	charlie kilo
+cpdlc	c p d l c
+cpr	c p r
+da	delta alfa
+dapro	delta alfa papa romeo oscar
+dc	delta charlie
+dg	delta golf
+dme	d m e
+effg	echo foxtrot foxtrot golf
+egt	e g t
+elt	e l t
+eta	e t a
+fl	flight level
+fms	f m s
+fod	f o d
+fupad	foxtrot uniform papa alfa delta
+gps	g p s
+gpws	g p w s
+hf	h f
+hrb	hotel romeo bravo
+hur	hotel uniform romeo
+hz	hotel zulu
+iiib	india india india bravo
+iiic	india india india charlie
+ils	i l s
+imc	i m c
+ip	india papa
+jemmy	jemmy
+jfk	juliett foxtrot kilo
+jmu	juliett mike uniform
+jo	juliett oscar
+kodap	kilo oscar delta alfa papa
+lhr	lima hotel romeo
+lko	lima kilo oscar
+llk	lima lima kilo
+lmn	lima mike november
+ln	lima november
+lv	lima victor
+lx	lima x-ray
+mea	m e a
+ml	mike lima
+mlt	mike lima tango
+mqr	mike quebec romeo
+ndb	n d b
+nld	november lima delta
+nm	nautical miles
+oblik	oscar bravo lima india kilo
+papi	papi
+per	per
+plt	papa lima tango
+pou	papa oscar uniform
+qnh	q n h
+ra	r a
+rnav	ar nav
+rnp	r n p
+rvr	r v r
+rvsm	r v s m
+selcal	selcal
+sha	sierra hotel alfa
+sid	s i d
+sigmet	sig met
+st	sierra tango
+sy	sierra yankee
+tb	tango bravo
+tcas	t cas
+toda	t o d a
+tora	t o r a
+vhf	v h f
+vmc	v m c
+vor	v o r
+wha	whiskey hotel alfa
+wuh	whiskey uniform hotel
+wxa	whiskey x-ray alfa
+wxi	whiskey x-ray india
+wxj	whiskey x-ray juliett
+yu	yankee uniform
+yv	yankee victor
+zam	zulu alfa mike
+zf	zulu foxtrot
+zho	zulu hotel oscar

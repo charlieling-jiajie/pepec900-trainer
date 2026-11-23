@@ -57,7 +57,7 @@ def spell_icao(s: str) -> str:
     return " ".join(ALPHA.get(c, c.lower()) for c in s if c.isalpha())
 
 
-UNIT = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+UNIT = ["zero", "one", "two", "tree", "four", "five", "six", "seven", "eight", "nine",
         "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
         "seventeen", "eighteen", "nineteen"]
 TEN = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
@@ -69,7 +69,7 @@ def digits(s):
 
 
 def num_words(n):
-    """英式数词（用于高度/百位）：3000 -> three thousand"""
+    """英式数词（用于高度/百位）：3000 -> tree thousand（three 一律读 tree）"""
     if n == 0:
         return "zero"
     if n < 20:
@@ -96,6 +96,106 @@ def alt_words(n):
 # ---------------- 读法策略 ----------------
 # 通话中的缩写 / 航路点：直接读字母（V O R、B K M），这是实际陆空通话习惯
 # ICAO 拼读词（Alfa/Bravo…）只用于需要逐字确认的场合，本工具在「读法表」中作为参考
+# ---------------- 发音对照表（权威，逐条指定） ----------------
+# 来源：《发音对照.txt》整理，2026-11-06。键=小写缩写，值=口语展开。
+# 命中后直接替换，不再走 LETTER_ABBR / WORD_ABBR 回退。
+# identity 条目（bus -> bus）表示按词读，保留作记录，ABBR_MAP 输出时自动过滤。
+PRON = {
+    "ac": "a c",
+    "ak": "alfa kilo",
+    "ams": "a m s",
+    "apu": "a p u",
+    "asda": "a s d a",
+    "atc": "a t c",
+    "au": "alfa uniform",
+    "bk": "bravo kilo",
+    "bkm": "bravo kilo mike",
+    "bus": "bus",
+    "cat": "cat",
+    "cdu": "c d u",
+    "cgo": "charlie golf oscar",
+    "ck": "charlie kilo",
+    "cpdlc": "c p d l c",
+    "cpr": "c p r",
+    "da": "delta alfa",
+    "dapro": "delta alfa papa romeo oscar",
+    "dc": "delta charlie",
+    "dg": "delta golf",
+    "dme": "d m e",
+    "effg": "echo foxtrot foxtrot golf",
+    "egt": "e g t",
+    "elt": "e l t",
+    "eta": "e t a",
+    "fl": "flight level",
+    "fms": "f m s",
+    "fod": "f o d",
+    "fupad": "foxtrot uniform papa alfa delta",
+    "gps": "g p s",
+    "gpws": "g p w s",
+    "hf": "h f",
+    "hrb": "hotel romeo bravo",
+    "hur": "hotel uniform romeo",
+    "hz": "hotel zulu",
+    "iiib": "india india india bravo",
+    "iiic": "india india india charlie",
+    "ils": "i l s",
+    "imc": "i m c",
+    "ip": "india papa",
+    "jemmy": "jemmy",
+    "jfk": "juliett foxtrot kilo",
+    "jmu": "juliett mike uniform",
+    "jo": "juliett oscar",
+    "kodap": "kilo oscar delta alfa papa",
+    "lhr": "lima hotel romeo",
+    "lko": "lima kilo oscar",
+    "llk": "lima lima kilo",
+    "lmn": "lima mike november",
+    "ln": "lima november",
+    "lv": "lima victor",
+    "lx": "lima x-ray",
+    "mea": "m e a",
+    "ml": "mike lima",
+    "mlt": "mike lima tango",
+    "mqr": "mike quebec romeo",
+    "ndb": "n d b",
+    "nld": "november lima delta",
+    "nm": "nautical miles",
+    "oblik": "oscar bravo lima india kilo",
+    "papi": "papi",
+    "per": "per",
+    "plt": "papa lima tango",
+    "pou": "papa oscar uniform",
+    "qnh": "q n h",
+    "ra": "r a",
+    "rnav": "ar nav",
+    "rnp": "r n p",
+    "rvr": "r v r",
+    "rvsm": "r v s m",
+    "selcal": "selcal",
+    "sha": "sierra hotel alfa",
+    "sid": "s i d",
+    "sigmet": "sig met",
+    "st": "sierra tango",
+    "sy": "sierra yankee",
+    "tb": "tango bravo",
+    "tcas": "t cas",
+    "toda": "t o d a",
+    "tora": "t o r a",
+    "vhf": "v h f",
+    "vmc": "v m c",
+    "vor": "v o r",
+    "wha": "whiskey hotel alfa",
+    "wuh": "whiskey uniform hotel",
+    "wxa": "whiskey x-ray alfa",
+    "wxi": "whiskey x-ray india",
+    "wxj": "whiskey x-ray juliett",
+    "yu": "yankee uniform",
+    "yv": "yankee victor",
+    "zam": "zulu alfa mike",
+    "zf": "zulu foxtrot",
+    "zho": "zulu hotel oscar",
+}
+
 # 直接读字母的常用航空缩写（用户指定：ILS 这一类 / 设备与频段缩写）
 LETTER_ABBR = {"VOR", "DME", "ILS", "NDB", "QNH", "QFE", "HF", "VHF", "UHF", "SSR",
                "ATC", "ADS", "ELT", "CPDLC"}
@@ -163,6 +263,12 @@ def clean(text: str) -> str:
     ]
     for pat, rep in fixes:
         t = re.sub(pat, rep, t)
+    # 台名保护：AMS VOR / PER NDB 这类"台名 + 导航台类型"里的台名必须走 ICAO 拼读，
+    # 否则会被发音对照表当成术语缩写误读（如 AMS -> a m s）
+    t = re.sub(r"\b([A-Z]{2,4})\s+(VOR|NDB|VORTAC|VOR-DME)\b",
+               lambda m: spell_icao(m.group(1)) + " " + m.group(2), t)
+    # ICAO 规定 3 读 TREE：文本里出现的英文词 three 一律读成 tree
+    t = re.sub(r"\bthree\b", "tree", t, flags=re.I)
     return re.sub(r"\s+", " ", t).strip()
 
 
@@ -197,8 +303,9 @@ def expand_segment(t: str, protect_head: bool = False):
                lambda m: digits(m.group(1)) + " decimal " + digits(m.group(2)), t)
 
     # 5.5) 进近类别 CAT II -> category two
-    t = re.sub(r"(?i)\bCAT\s+(III|II|I)\b",
-               lambda m: "category " + {"I": "one", "II": "two", "III": "three"}[m.group(1).upper()], t)
+    t = re.sub(r"(?i)\bCAT\s+(III|II|I)([A-Z])?\b",
+               lambda m: "category " + {"I": "one", "II": "two", "III": "tree"}[m.group(1).upper()]
+                         + (" " + ALPHA[m.group(2).upper()] if m.group(2) else ""), t)
 
     # 5.6) 质量/容积等单位 -> 数词
     t = re.sub(r"\b(\d+)\s*(kilograms|kilogram|kg|tonnes|tonne|pounds|pound|lbs|litres|liters|liter)\b",
@@ -224,6 +331,9 @@ def expand_segment(t: str, protect_head: bool = False):
 
     def _up(m):
         w = m.group(0)
+        if w.lower() in PRON:
+            ABBR_MAP[w.lower()] = PRON[w.lower()]
+            return PRON[w.lower()]
         if w in SPECIAL:
             ABBR_MAP[w.lower()] = SPECIAL[w]
             return SPECIAL[w]
