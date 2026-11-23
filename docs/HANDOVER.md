@@ -11,7 +11,7 @@ PEPEC 900 句复诵训练器：听标准音 → 复诵录音 → 逐词指出哪
 | 线上 | https://charlieling-jiajie.github.io/pepec900-trainer/ |
 | 仓库 | https://github.com/charlieling-jiajie/pepec900-trainer （public） |
 | 作者署名 | CharlieL（页面页脚） |
-| 版本 | v1.1.2（资源版本号以 `web/index.html` 内 `?v=N` 为准，见下文「版本号机制」） |
+| 版本 | v2.0（资源版本号以 `web/index.html` 内 `?v=N` 为准，见下文「版本号机制」） |
 | 部署 | GitHub Pages + Actions（`.github/workflows/pages.yml`，push 到 main 即发布） |
 
 ## 架构
