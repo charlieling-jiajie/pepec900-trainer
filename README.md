@@ -68,6 +68,21 @@ https://charlieling-jiajie.github.io/pepec900-trainer/
 
 > **微信内不支持**：微信内置浏览器跑不动 WASM 模型，按钮会置灰并提示「在浏览器打开」。手机浏览器可用，但首次下载与推理较慢（30–60 秒），建议电脑使用。
 
+识别准确率的现状与提升路径（模型升级、降噪、为何不做参考句偏置）见 [docs/asr-accuracy.md](docs/asr-accuracy.md)。
+
+## 难度分级（v1.2）
+
+难度来自《PEPEC900句 排序分级表 中英文版》（绵阳分院 2022.1.1）的难度列，与训练器语料逐句对齐：
+
+| 原表难度 | 归入选项 | 句数 |
+|---|---|---|
+| 2 / 3 / 4 | **ICAO4** | 724 |
+| 5 | **ICAO5** | 176 |
+
+- 筛选栏新增「ICAO4 / ICAO5」两档（与章节筛选并列），句卡标题行显示当前句的等级
+- 每句带 `level`（原始 2–5）与 `grade`（ICAO4 / ICAO5）字段，见 `data/corpus.json`
+- 难度原始数据与修订记录在 `data/levels.json`：原表 62 题难度「33」按笔误计 3；14 题难度列空白默认按 3（ICAO4）计（47/109/233/307/309/315/329/427/499/501/558/704/844/897），如需调整只改 `levels.json` 后跑 `python tools/merge_grades.py`
+
 ## 使用统计
 
 页面会向 `ggvps.charlieljj.ccwu.cc` 的自建计数服务上报三个事件：`open`（打开）、`practice`（完成一次复诵）、`asr`（用过识别）。
@@ -167,7 +182,7 @@ python tools/build_audio.py --engine kokoro --sid 16 --force
 
 ```bash
 python tools/build_corpus.py      # 重建 900 句与口语形式
-python tools/export_web.py        # 导出前端模块
+python tools/merge_grades.py      # 回填难度分级（level/grade）并导出前端模块
 python tools/build_audio.py --force   # 重生成参考音（约 2 分钟）
 ```
 

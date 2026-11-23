@@ -13,7 +13,7 @@ const LS_KEY = 'pepec900.v1';
 
 /* ---------------- 状态 ---------------- */
 const st = {
-  filter: 'all',        // all | ch1..ch8 | wrong
+  filter: 'all',        // all | ch1..ch8 | g4 | g5 | wrong
   order: 'random',      // random | seq
   idx: null,
   rate: 1,
@@ -58,6 +58,8 @@ if (location.protocol === 'file:') {
 function pool() {
   if (st.filter === 'all') return S;
   if (st.filter === 'wrong') return S.filter(s => st.db.wrong[s.id]);
+  if (st.filter === 'g4') return S.filter(s => s.grade === 'ICAO4');   // 难度 2/3/4
+  if (st.filter === 'g5') return S.filter(s => s.grade === 'ICAO5');   // 难度 5
   const c = Number(st.filter.slice(2));
   return S.filter(s => s.ch === c);
 }
@@ -86,7 +88,15 @@ function pick() {
 
 /* ---------------- 渲染 ---------------- */
 function renderBar() {
-  const items = [{ k: 'all', t: '全部 900' }, ...CH.map(c => ({ k: 'ch' + c.id, t: `第${c.id}章` })), { k: 'wrong', t: '错句本' }];
+  const n4 = S.filter(s => s.grade === 'ICAO4').length;
+  const n5 = S.filter(s => s.grade === 'ICAO5').length;
+  const items = [
+    { k: 'all', t: `全部 ${S.length}` },
+    { k: 'g4', t: `ICAO4（${n4}）` },
+    { k: 'g5', t: `ICAO5（${n5}）` },
+    ...CH.map(c => ({ k: 'ch' + c.id, t: `第${c.id}章` })),
+    { k: 'wrong', t: '错句本' },
+  ];
   el.chapterBar.innerHTML = items.map(it =>
     `<span class="chip ${st.filter === it.k ? 'on' : ''} ${it.k === 'wrong' ? 'ghost' : ''}" data-f="${it.k}">${it.t}</span>`
   ).join('');
@@ -110,7 +120,7 @@ function renderSentence(s) {
 
   const c = CH.find(x => x.id === s.ch);
   el.sid.textContent = '#' + s.id;
-  el.chap.textContent = `第${s.ch}章 · ${c ? c.name : ''}`;
+  el.chap.textContent = `第${s.ch}章 · ${c ? c.name : ''} · ${s.grade || ''}`;
   const r = st.db.rec[s.id];
   el.meta.textContent = r ? `练过 ${r.n} 次 · 最好 ${r.best}` : '未练过';
   el.text.textContent = s.text;
